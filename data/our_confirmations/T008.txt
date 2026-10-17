@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T008
+Product: FX
+Counterparty: Birch Capital
+Trade date: 2026-10-16
+Settle date: 2026-10-17
+Our side: BUY
+We buy: GBP 800,000
+We sell: EUR 940,000
+Rate: 1.1750
+
+Our payment instruction
+Pay to bank code: QUAYDEFF
+Pay to bank: Quay and Company
+Pay to branch: Frankfurt
+Pay to country: Germany
+Pay to account: 90052000
+Pay to account name: Birch Capital EUR old
+
+Our receive instruction
+Receive at bank code: WESTGBLN
+Receive at bank: Westferry Bank
+Receive at branch: London
+Receive at country: United Kingdom
+Receive at account: 90030001
+Receive at account name: Northline Treasury GBP
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T009
+Product: BOND
+Counterparty: Holm Securities
+Trade date: 2026-10-14
+Settle date: 2026-10-21
+Our side: BUY
+Security: SLBV 2.80 01DEC2028
+Quantity: 6,000,000
+Price: 99.00
+
+Our payment instruction
+Pay to bank code: WESTGBLN
+Pay to bank: Westferry Bank
+Pay to branch: London
+Pay to country: United Kingdom
+Pay to account: 90061000
+Pay to account name: Holm Securities USD old
+
+Our receive instruction
+Receive at bank code: WESTGBLN
+Receive at bank: Westferry Bank
+Receive at branch: London
+Receive at country: United Kingdom
+Receive at account: 90010001
+Receive at account name: Northline Treasury USD
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

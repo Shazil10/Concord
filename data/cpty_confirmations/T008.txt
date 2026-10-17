@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Birch Capital
+Trade id: T008
+Trade date: 2026-10-16
+Value date: 2026-10-17
+We receive the cash you pay. You receive the other side.
+You buy GBP 800,000.
+You sell EUR 940,000 at 1.1750.
+Pay cash to bank code: QUAYDEFF
+Pay cash to bank: Quay and Company
+Pay cash to branch: Frankfurt
+Pay cash to country: Germany
+Pay cash to account: 90052000
+Pay cash to account name: Birch Capital EUR old

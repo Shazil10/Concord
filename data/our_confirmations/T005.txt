@@ -1,0 +1,22 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T005
+Product: BOND
+Counterparty: Quill Asset Management
+Trade date: 2026-10-14
+Settle date: 2026-10-21
+Our side: SELL
+Security: HBND 3.10 01MAR2029
+Quantity: 4,000,000
+Price: 101.25
+
+Cash is payable to us
+Receive at bank code: QUAYDEFF
+Receive at bank: Quay and Company
+Receive at branch: Frankfurt
+Receive at country: Germany
+Receive at account: 90020001
+Receive at account name: Northline Treasury EUR
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

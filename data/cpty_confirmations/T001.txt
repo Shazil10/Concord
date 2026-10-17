@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Lumen Markets
+Trade id: T001
+Trade date: 2026-10-15
+Value date: 2026-10-17
+We receive the cash you pay. You receive the other side.
+You buy EUR 5,000,000.
+You sell USD 5,450,000 at 1.0900.
+Pay cash to bank code: FNBKUSNY
+Pay cash to bank: Fable National
+Pay cash to branch: New York
+Pay cash to country: United States
+Pay cash to account: 90011001
+Pay cash to account name: Lumen Markets operating

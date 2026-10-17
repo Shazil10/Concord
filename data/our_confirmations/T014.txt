@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T014
+Product: FX
+Counterparty: Pebble Street Capital
+Trade date: 2026-10-15
+Settle date: 2026-10-19
+Our side: BUY
+We buy: EUR 700,000
+We sell: USD 763,000
+Rate: 1.0900
+
+Our payment instruction
+Pay to bank code: PINESGSG
+Pay to bank: Pine Custody
+Pay to branch: Singapore
+Pay to country: Singapore
+Pay to account: 90071001
+Pay to account name: Pebble Street growth
+
+Our receive instruction
+Receive at bank code: QUAYDEFF
+Receive at bank: Quay and Company
+Receive at branch: Frankfurt
+Receive at country: Germany
+Receive at account: 90020001
+Receive at account name: Northline Treasury EUR
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

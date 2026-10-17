@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T020
+Product: BOND
+Counterparty: Veldt Capital
+Trade date: 2026-10-16
+Settle date: 2026-10-23
+Our side: BUY
+Security: VLDB 3.50 01SEP2032
+Quantity: 5,000,000
+Price: 100.50
+
+Our payment instruction
+Pay to bank code: LARKCHZH
+Pay to bank: Lark Clearing
+Pay to branch: Zurich
+Pay to country: Switzerland
+Pay to account: 90041001
+Pay to account name: Veldt Capital USD
+
+Our receive instruction
+Receive at bank code: WESTGBLN
+Receive at bank: Westferry Bank
+Receive at branch: London
+Receive at country: United Kingdom
+Receive at account: 90010001
+Receive at account name: Northline Treasury USD
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

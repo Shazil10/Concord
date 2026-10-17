@@ -1,0 +1,20 @@
+COUNTERPARTY CONFIRMATION
+From: Kite Rowan Securities
+Re: T017
+Trade date 2026-10-15 value 2026-10-19
+We confirm the following, copied from your recap:
+We pay USD 1,090,000.
+We receive the other side into our own book.
+Please pay us at the account below, which is your receive account, not ours.
+Pay to bank code: QUAYDEFF
+Pay to bank: Quay and Company
+Pay to branch: Frankfurt
+Pay to country: Germany
+Pay to account: 90020001
+Pay to account name: Northline Treasury EUR
+Receive at bank code: WESTGBLN
+Receive at bank: Westferry Bank
+Receive at branch: London
+Receive at country: United Kingdom
+Receive at account: 90021001
+Receive at account name: Kite Rowan USD

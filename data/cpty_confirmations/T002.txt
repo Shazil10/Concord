@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Kite Rowan Securities
+Trade id: T002
+Trade date: 2026-10-10
+Value date: 2026-10-21
+We receive the cash you pay. You receive the other side.
+You buy GBP 2,000,000.
+You sell USD 2,540,000 at 1.2700.
+Pay cash to bank code: WESTGBLN
+Pay cash to bank: Westferry Bank
+Pay cash to branch: London
+Pay cash to country: United Kingdom
+Pay cash to account: 90021001
+Pay cash to account name: Kite Rowan USD

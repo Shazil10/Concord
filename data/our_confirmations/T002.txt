@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T002
+Product: FX
+Counterparty: Kite Rowan Securities
+Trade date: 2026-10-10
+Settle date: 2026-10-21
+Our side: BUY
+We buy: GBP 2,000,000
+We sell: USD 2,540,000
+Rate: 1.2700
+
+Our payment instruction
+Pay to bank code: WESTGBLN
+Pay to bank: Westferry Bank
+Pay to branch: London
+Pay to country: United Kingdom
+Pay to account: 90021001
+Pay to account name: Kite Rowan USD
+
+Our receive instruction
+Receive at bank code: WESTGBLN
+Receive at bank: Westferry Bank
+Receive at branch: London
+Receive at country: United Kingdom
+Receive at account: 90030001
+Receive at account name: Northline Treasury GBP
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

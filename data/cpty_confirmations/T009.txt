@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Holm Securities
+Trade id: T009
+Trade date: 2026-10-14
+Value date: 2026-10-21
+We receive the cash you pay. You receive the other side.
+Security SLBV 2.80 01DEC2028, quantity 6,000,000, price 99.00.
+Cash USD 5,940,000.
+Pay cash to bank code: WESTGBLN
+Pay cash to bank: Westferry Bank
+Pay cash to branch: London
+Pay cash to country: United Kingdom
+Pay cash to account: 90061000
+Pay cash to account name: Holm Securities USD old

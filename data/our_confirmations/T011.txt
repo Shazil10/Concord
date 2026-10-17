@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T011
+Product: FX
+Counterparty: Orion Desk
+Trade date: 2026-10-15
+Settle date: 2026-10-19
+Our side: BUY
+We buy: EUR 900,000
+We sell: USD 981,000
+Rate: 1.0900
+
+Our payment instruction
+Pay to bank code: FNBKUSNY
+Pay to bank: Fable National
+Pay to branch: New York
+Pay to country: United States
+Pay to account: 90081001
+Pay to account name: Orion Desk USD
+
+Our receive instruction
+Receive at bank code: QUAYDEFF
+Receive at bank: Quay and Company
+Receive at branch: Frankfurt
+Receive at country: Germany
+Receive at account: 90020001
+Receive at account name: Northline Treasury EUR
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

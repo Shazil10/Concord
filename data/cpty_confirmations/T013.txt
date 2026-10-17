@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Cedar Point Markets
+Trade id: T013
+Trade date: 2026-10-16
+Value date: 2026-10-22
+We receive the cash you pay. You receive the other side.
+You buy JPY 300,000,000.
+You sell USD 2,000,000 at 150.00.
+Pay cash to bank code: PINEUSCH
+Pay cash to bank: Pine Custody
+Pay cash to branch: Chicago
+Pay cash to country: United States
+Pay cash to account: 90091002
+Pay cash to account name: Cedar Point USD

@@ -1,0 +1,12 @@
+From: settlements@holm.example
+To: settlements@northline.example
+Subject: New account for Holm Securities
+
+Hello Northline Treasury,
+
+Please note our new account, effective 2026-08-01.
+Old account 90061000 at Westferry Bank London (WESTGBLN) is closed for new settlements.
+New account 90061001 at Westferry Bank London (WESTGBLN).
+This applies to T009 and any open trade settling after the effective date.
+
+This mailbox is fictional. Do not reply.

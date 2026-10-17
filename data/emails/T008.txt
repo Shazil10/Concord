@@ -1,0 +1,12 @@
+From: settlements@birch.example
+To: settlements@northline.example
+Subject: New account for Birch Capital
+
+Hello Northline Treasury,
+
+Please note our new account, effective 2026-10-01.
+Old account 90052000 at Quay and Company Frankfurt (QUAYDEFF) is closed for new settlements.
+New account 90052002 at Quay and Company Frankfurt (QUAYDEFF).
+This applies to T008 and any open trade settling after the effective date.
+
+This mailbox is fictional. Do not reply.

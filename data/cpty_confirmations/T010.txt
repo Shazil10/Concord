@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Holm Securities
+Trade id: T010
+Trade date: 2026-10-16
+Value date: 2026-10-20
+We receive the cash you pay. You receive the other side.
+You buy EUR 2,500,000.
+You sell USD 2,725,000 at 1.0900.
+Pay cash to bank code: WESTGBLN
+Pay cash to bank: Westferry Bank
+Pay cash to branch: London
+Pay cash to country: United Kingdom
+Pay cash to account: 90061000
+Pay cash to account name: Holm Securities USD old

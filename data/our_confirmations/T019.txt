@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T019
+Product: FX
+Counterparty: Quill Asset Management
+Trade date: 2026-10-16
+Settle date: 2026-10-17
+Our side: BUY
+We buy: USD 1,635,000
+We sell: EUR 1,500,000
+Rate: 1.0900
+
+Our payment instruction
+Pay to bank code: MOORNLAM
+Pay to bank: Moor and Holt
+Pay to branch: Amsterdam
+Pay to country: Netherlands
+Pay to account: 90082001
+Pay to account name: Quill Asset Management EUR
+
+Our receive instruction
+Receive at bank code: WESTGBLN
+Receive at bank: Westferry Bank
+Receive at branch: London
+Receive at country: United Kingdom
+Receive at account: 90010001
+Receive at account name: Northline Treasury USD
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

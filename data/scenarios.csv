@@ -1,0 +1,21 @@
+trade_id,product,failure_type,expected_decision,expected_fault,notes
+T001,FX,clean,Release,none,Clean FX spot. Both confirms use the current operating account.
+T002,FX,clean,Release,none,Clean FX forward.
+T003,BOND,clean,Release,none,Clean bond purchase. Cash settlement amount is price times quantity over 100.
+T004,FX,clean,Release,none,Clean FX spot.
+T005,BOND,clean,Release,none,Clean bond sale. Cash is paid to our EUR account. Their confirm names that same account.
+T006,FX,clean,Release,none,Clean FX spot. We pay EUR.
+T007,FX,stale_ssi,Hold,us,"Stale USD account 90051000 on both confirms. Registry version 2 is 90051001 from 2026-09-15. Email asks us to update. v1 snapshot still has version 1, so v1 can wrongly Release."
+T008,FX,stale_ssi,Hold,us,"Settles today. Stale EUR account 90052000. Registry version 2 is 90052002 from 2026-10-01. Urgency: call, do not wait on email. Scorecard decision stays Hold."
+T009,BOND,stale_ssi,Hold,us,Bond. Stale USD account 90061000. Registry version 2 is 90061001 from 2026-08-01.
+T010,FX,stale_ssi,Hold,us,Stale USD account 90061000. Same Holm change as T009. Email is enough; value date is 2026-10-20.
+T011,FX,wrong_branch,Hold,counterparty,"Same institution, wrong branch. Registry and our confirm: Fable National New York FNBKUSNY. Their confirm: Fable National Seoul FNBKKRSE. Account number matches."
+T012,BOND,wrong_branch,Hold,counterparty,"Settles today. Growth account 90071001 is right, but their confirm names Pine Custody Chicago instead of Singapore. Urgency: call. Scorecard decision stays Hold."
+T013,FX,wrong_branch,Hold,counterparty,"Their confirm sends our USD to Pine Custody Chicago. Registry says Pine Custody Singapore, same account number 90091002."
+T014,FX,shared_code_wrong_account,Hold,counterparty,Same bank code PINESGSG. This trade belongs to the growth account 90071001. Their confirm uses the income account 90071002.
+T015,BOND,shared_code_wrong_account,Hold,us,Our confirm pays the income account 90071002. Their confirm and the growth purpose on the trade say 90071001. Fault is us. Bank code PINESGSG matches either way.
+T016,FX,shared_code_wrong_account,Hold,us,Our confirm uses Lumen's collateral account 90011099. Their confirm uses the operating account 90011001. Same bank code FNBKUSNY. Fault is us.
+T017,FX,swapped_sides,Hold,counterparty,We pay USD and receive EUR. Their confirm copies our direction: they also say they pay USD and receive EUR. Our pay must match their receive.
+T018,BOND,swapped_sides,Hold,counterparty,We buy the bond and pay USD. Their confirm says they pay the cash and we deliver the bond.
+T019,FX,missing_cpty_confirm,Hold,counterparty,No counterparty confirmation file. Settles today. v1 should crash with no decision. v2 should Hold and chase. Urgency: call.
+T020,BOND,missing_cpty_confirm,Hold,counterparty,"No counterparty confirmation file. Value date is 2026-10-23, so an email chase is enough. v1 crashes. v2 Holds."

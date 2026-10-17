@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T006
+Product: FX
+Counterparty: Marlow Brothers
+Trade date: 2026-10-16
+Settle date: 2026-10-19
+Our side: BUY
+We buy: USD 3,000,000
+We sell: EUR 2,760,000
+Rate: 1.0870
+
+Our payment instruction
+Pay to bank code: QUAYDEFF
+Pay to bank: Quay and Company
+Pay to branch: Frankfurt
+Pay to country: Germany
+Pay to account: 90034001
+Pay to account name: Marlow Brothers EUR
+
+Our receive instruction
+Receive at bank code: WESTGBLN
+Receive at bank: Westferry Bank
+Receive at branch: London
+Receive at country: United Kingdom
+Receive at account: 90010001
+Receive at account name: Northline Treasury USD
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

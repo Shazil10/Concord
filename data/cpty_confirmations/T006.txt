@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Marlow Brothers
+Trade id: T006
+Trade date: 2026-10-16
+Value date: 2026-10-19
+We receive the cash you pay. You receive the other side.
+You buy USD 3,000,000.
+You sell EUR 2,760,000 at 1.0870.
+Pay cash to bank code: QUAYDEFF
+Pay cash to bank: Quay and Company
+Pay cash to branch: Frankfurt
+Pay cash to country: Germany
+Pay cash to account: 90034001
+Pay cash to account name: Marlow Brothers EUR
