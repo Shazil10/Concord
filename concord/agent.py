@@ -71,7 +71,8 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
 
         # If v1 crashes, stop here
         if error_out and version == "v1":
-            _send_trajectory(pt, steps, session_id, version, trade_id, product, "error", "crash")
+            _send_trajectory(pt, steps, session_id, version, trade_id, product, "error", "crash",
+                             tokens=total_tokens, error=error_out)
             raise error_out
 
         # ── Step 4: get_custodian_status ─────────────────────────────
@@ -204,7 +205,9 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
 
     def _emit(outcome: str, status: str) -> None:
         _send_trajectory(
-            pt, steps, session_id, version, trade_id, product, status, outcome
+            pt, steps, session_id, version, trade_id, product, status, outcome,
+            tokens=total_tokens, decision=decision,
+            answer=f"{decision}: {result['reason']}",
         )
 
     if emit:
@@ -216,41 +219,58 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
 
 
 def _send_trajectory(
-    pt, steps, session_id, version, trade_id, product, final_status, outcome: str = "completed"
+    pt, steps, session_id, version, trade_id, product, final_status, outcome: str = "completed",
+    *, tokens: dict | None = None, decision: str | None = None,
+    answer: str | None = None, error: BaseException | None = None,
 ):
     """Submit the trajectory and a summary trace to PRISM."""
+    tokens = tokens or {}
+    traj_steps = list(steps)
+    # A run that reached a decision ends in a final_answer step. A crashed
+    # run has none, which is how PRISM tells it stopped without an answer.
+    if decision:
+        traj_steps.append({
+            "step_type": "final_answer",
+            "label": "final_answer",
+            "input_summary": f"trade_id={trade_id}",
+            "output_summary": (answer or decision)[:500],
+            "duration_ms": 0,
+            "status": "error" if final_status == "error" else "success",
+        })
+
+    metadata = {
+        "version": version,
+        "trade_id": trade_id,
+        "product": product,
+        "decision": decision or "none",
+        "final_status": final_status,
+        "outcome": outcome,
+        "step_count": len(traj_steps),
+    }
+    if final_status == "error":
+        metadata["status"] = "error"
+    if error is not None:
+        metadata["error_type"] = type(error).__name__
+        metadata["error_message"] = str(error)[:500]
+
     with prismtrace.session(session_id):
         pt.submit_trajectory(
-            steps=[s for s in steps],
+            steps=traj_steps,
             agent_name="concord",
             agent_id="concord",
             model=CONCORD_MODEL,
             final_status=final_status,
         )
 
-        decision = "unknown"
-        for s in reversed(steps):
-            if s["label"] == "decide" and "Release" in s.get("output_summary", ""):
-                decision = "Release"
-                break
-            elif s["label"] == "decide":
-                decision = "Hold"
-                break
-
         pt.trace_llm(
             model=CONCORD_MODEL,
             agent_name="concord",
             agent_id="concord",
             input_messages=[{"role": "user", "content": f"Verify trade {trade_id}"}],
-            output=f"{decision} — {final_status}",
+            # PRISM counts a trace with an empty output as failed.
+            output="" if error is not None else (answer or ""),
             latency_ms=sum(s.get("duration_ms", 0) for s in steps),
-            metadata={
-                "version": version,
-                "trade_id": trade_id,
-                "product": product,
-                "decision": decision,
-                "final_status": final_status,
-                "outcome": outcome,
-                "step_count": len(steps),
-            },
+            token_count_input=tokens.get("input", 0) or 0,
+            token_count_output=tokens.get("output", 0) or 0,
+            metadata=metadata,
         )
