@@ -1,21 +1,21 @@
-trade_id,product,trade_date,settle_date,our_entity,counterparty,side,ccy_bought,amount_bought,ccy_sold,amount_sold,rate_or_price,security_id,quantity,settlement_location
-T001,FX,2026-10-15,2026-10-17,Northline Treasury,Lumen Markets,BUY,EUR,5000000,USD,5450000,1.0900,,,New York
-T002,FX,2026-10-10,2026-10-21,Northline Treasury,Kite Rowan Securities,BUY,GBP,2000000,USD,2540000,1.2700,,,London
-T003,BOND,2026-10-16,2026-10-19,Northline Treasury,Sable Fund Services,BUY,,,USD,9850000,98.50,NLGV 4.25 15JUN2031,10000000,New York
-T004,FX,2026-10-16,2026-10-20,Northline Treasury,Veldt Capital,BUY,JPY,750000000,USD,5000000,150.00,,,Singapore
-T005,BOND,2026-10-14,2026-10-21,Northline Treasury,Quill Asset Management,SELL,EUR,4050000,,,101.25,HBND 3.10 01MAR2029,4000000,Frankfurt
-T006,FX,2026-10-16,2026-10-19,Northline Treasury,Marlow Brothers,BUY,USD,3000120,EUR,2760000,1.0870,,,Frankfurt
-T007,FX,2026-10-15,2026-10-19,Northline Treasury,Birch Capital,BUY,EUR,1200000,USD,1308000,1.0900,,,New York
-T008,FX,2026-10-16,2026-10-17,Northline Treasury,Birch Capital,BUY,GBP,800000,EUR,940000,1.1750,,,Frankfurt
-T009,BOND,2026-10-14,2026-10-21,Northline Treasury,Holm Securities,BUY,,,USD,5940000,99.00,SLBV 2.80 01DEC2028,6000000,London
-T010,FX,2026-10-16,2026-10-20,Northline Treasury,Holm Securities,BUY,EUR,2500000,USD,2725000,1.0900,,,London
-T011,FX,2026-10-15,2026-10-19,Northline Treasury,Orion Desk,BUY,EUR,900000,USD,981000,1.0900,,,New York
-T012,BOND,2026-10-16,2026-10-17,Northline Treasury,Pebble Street Capital,BUY,,,USD,2500000,100.00,PBBL 5.00 15JAN2030,2500000,Singapore
-T013,FX,2026-10-16,2026-10-22,Northline Treasury,Cedar Point Markets,BUY,JPY,300000000,USD,2000000,150.00,,,Singapore
-T014,FX,2026-10-15,2026-10-19,Northline Treasury,Pebble Street Capital,BUY,EUR,700000,USD,763000,1.0900,,,Singapore
-T015,BOND,2026-10-14,2026-10-21,Northline Treasury,Pebble Street Capital,BUY,,,USD,7780000,97.25,PBBL 4.00 01NOV2030,8000000,Singapore
-T016,FX,2026-10-16,2026-10-20,Northline Treasury,Lumen Markets,BUY,EUR,1500000,USD,1635000,1.0900,,,New York
-T017,FX,2026-10-15,2026-10-19,Northline Treasury,Kite Rowan Securities,BUY,EUR,1000000,USD,1090000,1.0900,,,London
-T018,BOND,2026-10-15,2026-10-21,Northline Treasury,Sable Fund Services,BUY,,,USD,3060000,102.00,SBLB 4.00 01NOV2030,3000000,Zurich
-T019,FX,2026-10-16,2026-10-17,Northline Treasury,Quill Asset Management,BUY,USD,1635000,EUR,1500000,1.0900,,,Amsterdam
-T020,BOND,2026-10-16,2026-10-23,Northline Treasury,Veldt Capital,BUY,,,USD,5025000,100.50,VLDB 3.50 01SEP2032,5000000,Zurich
+trade_id,product,trade_date,settle_date,our_entity,counterparty,side,ccy_bought,amount_bought,ccy_sold,amount_sold,rate_or_price,security_id,quantity,settlement_location,settlement_purpose
+T001,FX,2026-10-15,2026-10-17,Northline Treasury,Lumen Markets,BUY,EUR,5000000,USD,5450000,1.0900,,,New York,operating
+T002,FX,2026-10-10,2026-10-21,Northline Treasury,Kite Rowan Securities,BUY,GBP,2000000,USD,2540000,1.2700,,,London,
+T003,BOND,2026-10-16,2026-10-19,Northline Treasury,Sable Fund Services,BUY,,,USD,9850000,98.50,NLGV 4.25 15JUN2031,10000000,New York,
+T004,FX,2026-10-16,2026-10-20,Northline Treasury,Veldt Capital,BUY,JPY,750000000,USD,5000000,150.00,,,Singapore,
+T005,BOND,2026-10-14,2026-10-21,Northline Treasury,Quill Asset Management,SELL,EUR,4050000,,,101.25,HBND 3.10 01MAR2029,4000000,Frankfurt,
+T006,FX,2026-10-16,2026-10-19,Northline Treasury,Marlow Brothers,BUY,USD,3000120,EUR,2760000,1.0870,,,Frankfurt,
+T007,FX,2026-10-15,2026-10-19,Northline Treasury,Birch Capital,BUY,EUR,1200000,USD,1308000,1.0900,,,New York,
+T008,FX,2026-10-16,2026-10-17,Northline Treasury,Birch Capital,BUY,GBP,800000,EUR,940000,1.1750,,,Frankfurt,
+T009,BOND,2026-10-14,2026-10-21,Northline Treasury,Holm Securities,BUY,,,USD,5940000,99.00,SLBV 2.80 01DEC2028,6000000,London,
+T010,FX,2026-10-16,2026-10-20,Northline Treasury,Holm Securities,BUY,EUR,2500000,USD,2725000,1.0900,,,London,
+T011,FX,2026-10-15,2026-10-19,Northline Treasury,Orion Desk,BUY,EUR,900000,USD,981000,1.0900,,,New York,
+T012,BOND,2026-10-16,2026-10-17,Northline Treasury,Pebble Street Capital,BUY,,,USD,2500000,100.00,PBBL 5.00 15JAN2030,2500000,Singapore,growth
+T013,FX,2026-10-16,2026-10-22,Northline Treasury,Cedar Point Markets,BUY,JPY,300000000,USD,2000000,150.00,,,Singapore,
+T014,FX,2026-10-15,2026-10-19,Northline Treasury,Pebble Street Capital,BUY,EUR,700000,USD,763000,1.0900,,,Singapore,growth
+T015,BOND,2026-10-14,2026-10-21,Northline Treasury,Pebble Street Capital,BUY,,,USD,7780000,97.25,PBBL 4.00 01NOV2030,8000000,Singapore,growth
+T016,FX,2026-10-16,2026-10-20,Northline Treasury,Lumen Markets,BUY,EUR,1500000,USD,1635000,1.0900,,,New York,operating
+T017,FX,2026-10-15,2026-10-19,Northline Treasury,Kite Rowan Securities,BUY,EUR,1000000,USD,1090000,1.0900,,,London,
+T018,BOND,2026-10-15,2026-10-21,Northline Treasury,Sable Fund Services,BUY,,,USD,3060000,102.00,SBLB 4.00 01NOV2030,3000000,Zurich,
+T019,FX,2026-10-16,2026-10-17,Northline Treasury,Quill Asset Management,BUY,USD,1635000,EUR,1500000,1.0900,,,Amsterdam,
+T020,BOND,2026-10-16,2026-10-23,Northline Treasury,Veldt Capital,BUY,,,USD,5025000,100.50,VLDB 3.50 01SEP2032,5000000,Zurich,

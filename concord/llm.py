@@ -8,7 +8,7 @@ from typing import Any
 
 from openai import OpenAI
 
-from concord.config import CONCORD_MODEL, NICRRON_API_KEY, NICRRON_BASE_URL
+from concord.config import CONCORD_MODEL, DEMO_DATE, NICRRON_API_KEY, NICRRON_BASE_URL
 
 _client = OpenAI(base_url=NICRRON_BASE_URL, api_key=NICRRON_API_KEY)
 
@@ -66,10 +66,17 @@ Rules:
 DRAFT_SYSTEM = """You draft settlement operations messages. Given the trade details, breaks,
 fault, and urgency, write a professional but concise message.
 
+Address every message to the counterparty by name.
+If fault is "us", say we are amending our confirmation to the registry instruction and ask
+them to confirm it. If fault is "counterparty", ask them for an amended confirmation.
+
 For email: name the field, our value, their value, registry value. Ask for an amended
 confirmation before value date. Do not threaten or quote penalty schedules.
 
-For call: state the cash amount and the account that is wrong. Ask them not to release.
+For call: write short talking points. State the cash amount and the account that is wrong.
+Ask them not to release.
+
+End with: "This note was not sent."
 
 For release: write "Matched. Ready to release."
 
@@ -188,8 +195,11 @@ def _fill_from_text(parsed: dict, text: str) -> dict:
     return parsed
 
 
-def explain_breaks(trade: dict, breaks: list[dict], email_text: str | None = None) -> dict:
+def explain_breaks(trade: dict, breaks: list[dict], email_text: str | None = None,
+                   fault: str | None = None) -> dict:
     content = f"Trade: {json.dumps(trade, indent=2)}\n\nBreaks:\n{json.dumps(breaks, indent=2)}"
+    if fault:
+        content += f"\n\nFault has already been determined by the registry check: {fault}. Explain why."
     if email_text:
         content += f"\n\nCounterparty email:\n{email_text}"
     return _call(EXPLAIN_SYSTEM, content)
@@ -197,6 +207,7 @@ def explain_breaks(trade: dict, breaks: list[dict], email_text: str | None = Non
 
 def draft_message(trade: dict, breaks: list[dict], fault: str, urgency: str, explanation: str) -> dict:
     content = (
+        f"Today is {DEMO_DATE}.\n"
         f"Trade: {json.dumps(trade, indent=2)}\n"
         f"Breaks: {json.dumps(breaks, indent=2)}\n"
         f"Fault: {fault}\nUrgency: {urgency}\n"

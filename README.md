@@ -50,6 +50,8 @@ Concord runs a 12-step pipeline for each trade:
 | **v1** (buggy) | Reads stale SSI snapshot; crashes on missing counterparty confirmation | 14/20 (70%) |
 | **v2** (fixed) | Reads current registry with version history; gracefully handles missing confirmations | 20/20 (100%) |
 
+Fault (us or counterparty) is assigned in code, not by the model: whichever confirmation disagrees with the registry is at fault, and if both carry a stale instruction the fault is ours. Urgency is call when the trade settles today, email otherwise. v2 gets fault right on 20/20.
+
 ## Failure types detected
 
 1. **Stale SSI** — Our confirmation uses an outdated account number. Registry has the update.
