@@ -1,111 +1,292 @@
-# Concord — Pre-Settlement Trade Verification Agent
+<div align="center">
 
-> **Money Talks 2 — AI × Finance Hackathon** | Money Operations track  
-> Built by Shazil Farukh & Vladislav Pak (World Bank Group Treasury)
+<br />
 
-**Concord** checks every trade against every party's confirmation and the latest settlement instructions before money moves. It hands a human one decision: **Release** or **Hold**. Every Hold says whose fault it is and whether to **call** (settles today) or **email**.
+# Concord
 
-**Demo video (1 min):** [Watch on Loom](https://www.loom.com/share/de3117b0a92b4babbe6bed9ad292f5ae)
+### An AI agent that checks every trade before the money moves.
 
-**Demo site:** [empty-react-app-6c23.ninoo.app](https://empty-react-app-6c23.ninoo.app/), built on Ninoo Builder. The source is `ui/site/App.tsx`.
+<p>
+  <a href="https://empty-react-app-6c23.ninoo.app/"><img alt="Live demo" src="https://img.shields.io/badge/Live_demo-Ninoo-0071BC?style=for-the-badge" /></a>
+  &nbsp;
+  <a href="https://www.loom.com/share/de3117b0a92b4babbe6bed9ad292f5ae"><img alt="1-minute video" src="https://img.shields.io/badge/Watch-1_min_video-B42318?style=for-the-badge" /></a>
+  &nbsp;
+  <a href="#prism-proofs"><img alt="PRISM traced" src="https://img.shields.io/badge/Traced_in-PRISM-1E7B45?style=for-the-badge" /></a>
+</p>
 
-## Quick start
+<p>
+  <img alt="Model" src="https://img.shields.io/badge/model-claude--fable--5--1-0B2545?style=flat-square" />
+  <img alt="API" src="https://img.shields.io/badge/API-Nicrron-0B2545?style=flat-square" />
+  <img alt="Python" src="https://img.shields.io/badge/python-3.9+-0B2545?style=flat-square" />
+  <img alt="Accuracy" src="https://img.shields.io/badge/v2_accuracy-20%2F20-1E7B45?style=flat-square" />
+  <img alt="Data" src="https://img.shields.io/badge/data-synthetic-5D6B7A?style=flat-square" />
+</p>
+
+**Money Talks 2 · AI × Finance Hackathon · Money Operations track**
+Shazil Farukh & Vladislav Pak · World Bank Group Treasury
+
+<br />
+
+<img src="docs/img/site-run.png" alt="Concord running twelve checks on trade T008. Step seven fails: the confirmations show account 90052000, the registry shows 90052002. Decision: Hold." width="900" />
+
+<sub>Concord on trade T008. Six checks pass, step seven catches a bank account that changed two weeks ago. The payment is held and a note is drafted. Nothing is sent without a human.</sub>
+
+</div>
+
+<br />
+
+## The quiet mistake
+
+Payments go to the wrong account even when every check passes. A counterparty changes its bank details, the update reaches one system but not the confirmations, and both sides' paperwork agrees, wrongly. The money leaves. Getting it back takes a week of emails and calls, and in development finance a frozen week is a week a country waits.
+
+Concord reads what an analyst reads: our confirmation, theirs, the emails, and the **live** settlement instructions. It runs the same twelve checks, every trade, in under a second, and hands a human one decision.
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Release
+All sources agree on where the money goes, how much, and when.
+
+</td>
+<td width="50%" valign="top">
+
+### Hold
+Something doesn't match. Concord says **what** broke, **whose fault** it is (us or the counterparty), **how urgent** it is (call today, or email), what it **costs** if it fails, and drafts the note.
+
+</td>
+</tr>
+</table>
+
+> The model reads and writes. Plain, auditable code decides. Nothing is ever sent automatically.
+
+<br />
+
+## Before and after
+
+Both versions ran on the **same 20 synthetic trades**, scored against a fixed answer key.
+
+<div align="center">
+
+| | v1 · before | v2 · after |
+|:--|:--:|:--:|
+| Right decision | 14 / 20 | **20 / 20** |
+| Paid to a closed account | 4 | **0** |
+| Crashed with no answer | 2 | **0** |
+| Fault named correctly | 14 / 20 | **20 / 20** |
+
+</div>
+
+**What was wrong with v1.** It read a snapshot of the settlement instructions instead of the live registry, so it released four trades to accounts that had been closed. It also crashed whenever a counterparty hadn't sent a confirmation. Both bugs were invisible from the outside: the runs looked clean until PRISM flagged them.
+
+**What v2 changed.** Reads the versioned registry. Treats a missing confirmation as a break to chase, not an exception. Assigns fault and urgency in code rather than asking the model.
+
+<br />
+
+## The twelve checks
+
+```mermaid
+flowchart LR
+    A[1 Load trade] --> B[2 Read our<br/>confirmation]
+    B --> C[3 Read their<br/>confirmation]
+    C --> D[4 Custodian<br/>status]
+    D --> E[5 Live<br/>instructions]
+    E --> F[6 Bank &amp;<br/>branch]
+    F --> G[7 Account vs<br/>instructions]
+    G --> H[8 Both sides<br/>agree]
+    H --> I[9 Amounts<br/>&amp; dates]
+    I --> J[10 Fail<br/>cost]
+    J --> K{11 Decide}
+    K -->|clean| R([Release])
+    K -->|breaks| L[12 Draft note] --> HOLD([Hold])
+
+    style R fill:#E7F3EC,stroke:#1E7B45,color:#1E7B45
+    style HOLD fill:#FCF0E3,stroke:#B54708,color:#B54708
+    style K fill:#EAF4FB,stroke:#0071BC,color:#0B2545
+```
+
+| # | Step | Who does it | What it does |
+|:-:|:--|:--|:--|
+| 1 | `load_trade` | code | Load the trade and any desk emails |
+| 2 | `parse_our_confirmation` | **model** | Read our SWIFT-style confirmation into fields |
+| 3 | `parse_counterparty_confirmation` | **model** | Read theirs, including free text and odd formats |
+| 4 | `get_custodian_status` | code | Custodian readiness and cash cut-offs |
+| 5 | `lookup_ssi_registry` | code | Fetch the **current** standing instructions, with version history |
+| 6 | `resolve_bank_branch` | code | Bank code to branch mapping |
+| 7 | `check_entity_account` | code | Does the account we're paying match the registry? |
+| 8 | `cross_match_sides` | code | Do both parties agree on where money goes? Detects swapped sides |
+| 9 | `compare_economics` | code | Amounts, rate, dates across every source |
+| 10 | `estimate_fail_cost` | code | Penalty estimate if settlement fails |
+| 11 | `decide` | code | Release or Hold. Fault and urgency assigned by rule |
+| 12 | `draft_message` | **model** | A short, polite note for a human to approve |
+
+Three of twelve steps touch the model. The rest is deterministic, which is why the same inputs give the same answer every time.
+
+<br />
+
+## One trade, end to end
+
+Trade **T008**: Northline Treasury pays Birch Capital EUR 940,000, value date today.
+
+```text
+Our confirmation      Quay and Company, Frankfurt     account 90052000
+Their confirmation    Quay and Company, Frankfurt     account 90052000
+Live registry (v2)    Quay and Company, Frankfurt     account 90052002   ← changed 1 Oct
+```
+
+The two confirmations agree with each other. They are both wrong. v1 released this payment. v2 returns:
+
+```json
+{
+  "decision": "Hold",
+  "fault": "us",
+  "urgency": "call",
+  "recipient": "Birch Capital",
+  "breaks": [{
+    "field": "account",
+    "our_value": "90052000",
+    "registry_value": "90052002",
+    "issue": "Account mismatch with registry"
+  }],
+  "fail_cost": { "estimated_penalty": 5128.77, "currency": "EUR" },
+  "draft_message": "Hi — our confirmation for T008 still shows account 90052000 ..."
+}
+```
+
+Fault is **us** because the counterparty did send the update; our confirmation was never refreshed. Urgency is **call** because it settles today.
+
+<br />
+
+## Failure types in the test set
+
+| Type | What happens | Example |
+|:--|:--|:--|
+| Stale account | Our confirmation carries an account the counterparty closed | T008 |
+| Wrong branch | Counterparty quotes a different bank code than on record | T011 |
+| Shared code, wrong account | Same bank, several accounts, we picked the wrong one | T015 |
+| Swapped sides | Counterparty copied our confirmation as theirs | T017, T018 |
+| Missing confirmation | Nothing received from the counterparty | T019, T020 |
+
+Twenty trades, FX and bonds, ten fictional counterparties. The answer key is in `data/scenarios.csv`.
+
+<br />
+
+<a id="prism-proofs"></a>
+## PRISM proofs
+
+Every run is traced step by step in [PRISM by Block Convey](https://prism.blockconvey.com). This is how we found the v1 bugs.
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+**Root cause: one cluster, 52 runs**
+PRISM grouped v1's failures into a single cluster and localised it. We confirmed it as a tool error, fixed it, and re-ran.
+
+<img src="docs/img/prism-root-cause.png" alt="PRISM Root Cause view showing one cluster of 52 affected traces, verified by a human as a tool error" />
+
+</td>
+<td width="50%" valign="top">
+
+**Every trade, every step**
+Each trade is a session with 12 tool steps plus a final answer. Steps show input, output, latency and tokens.
+
+<img src="docs/img/prism-traces.png" alt="PRISM Traces list showing one trace per trade run by the concord agent" />
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**T019 on v1: no answer**
+Counterparty sent no confirmation. v1 stopped at step 3 with an empty output and an error. Six of these in an hour fired the failure alert (threshold 5).
+
+<img src="docs/img/prism-t019-v1.png" alt="PRISM trace of T019 on v1: no output recorded, error 'No counterparty confirmation for T019'" />
+
+</td>
+<td width="50%" valign="top">
+
+**T019 on v2: same input, right answer**
+Hold, missing counterparty confirmation, chase required. All 12 steps completed.
+
+<img src="docs/img/prism-t019-v2.png" alt="PRISM trace of T019 on v2: output 'Hold: Missing counterparty confirmation — chase required'" />
+
+</td>
+</tr>
+</table>
+
+<br />
+
+## Run it yourself
 
 ```bash
-# 1. Clone and install
 git clone https://github.com/Shazil10/Concord.git
 cd Concord
 pip install openai python-dotenv prismtrace-sdk
 
-# 2. Set up secrets (copy the example and fill in your keys)
-cp .env.example .env
-# Edit .env with your NICRRON_API_KEY and PRISM_API_KEY
+cp .env.example .env        # add your NICRRON_API_KEY and PRISM keys
 
-# 3. Run v2 (the fixed agent) on all 20 trades
-python -m concord.run_batch --version v2
-
-# 4. Run v1 (the buggy agent) to see the before-picture
-python -m concord.run_batch --version v1
+python -m concord.run_batch --version v2     # 20/20
+python -m concord.run_batch --version v1     # 14/20, 2 crashes
+python -m concord.run_batch --version v2 --trades T008 T019
 ```
 
-## How it works
+Each run prints a scorecard and writes `results/<version>.json` with one row per trade: decision, fault, urgency, breaks, fail cost, draft, token counts and the PRISM session id.
 
-Concord runs a 12-step pipeline for each trade:
+<br />
 
-| Step | Tool | What it does |
-|------|------|--------------|
-| 1 | `load_trade` | Load trade + email from data files |
-| 2 | `parse_our_confirmation` | LLM parses our SWIFT-style confirmation |
-| 3 | `parse_counterparty_confirmation` | LLM parses the counterparty's confirmation |
-| 4 | `get_custodian_status` | Check custodian readiness and cash cutoffs |
-| 5 | `lookup_ssi_registry` | Look up latest SSI for the counterparty |
-| 6 | `resolve_bank_branch` | Verify bank code → branch mapping |
-| 7 | `check_entity_account` | Compare our pay account against the registry |
-| 8 | `cross_match_sides` | Verify both sides agree on where money goes |
-| 9 | `compare_economics` | Compare amounts, rate, dates across sources |
-| 10 | `estimate_fail_cost` | Estimate penalty if settlement fails |
-| 11 | `decide` | Release (clean) or Hold (breaks found) |
-| 12 | `draft_message` | LLM drafts call/email for the operations desk |
+## How it's built
 
-## v1 vs v2
-
-| Version | What's different | Score |
-|---------|-----------------|-------|
-| **v1** (buggy) | Reads stale SSI snapshot; crashes on missing counterparty confirmation | 14/20 (70%) |
-| **v2** (fixed) | Reads current registry with version history; gracefully handles missing confirmations | 20/20 (100%) |
-
-Fault (us or counterparty) is assigned in code, not by the model: whichever confirmation disagrees with the registry is at fault, and if both carry a stale instruction the fault is ours. Urgency is call when the trade settles today, email otherwise. v2 gets fault right on 20/20.
-
-## Failure types detected
-
-1. **Stale SSI** — Our confirmation uses an outdated account number. Registry has the update.
-2. **Wrong branch** — Counterparty quotes a different branch/bank code than what's on record.
-3. **Shared code, wrong account** — Same bank code, multiple accounts. We picked the wrong one.
-4. **Swapped sides** — Counterparty copied our confirmation as theirs (pay ↔ receive swapped).
-5. **Missing confirmation** — No counterparty confirmation received. Chase required.
-
-## Project structure
-
-```
+```text
 concord/
-  config.py       — Environment + constants
-  data.py         — Load trades, confirmations, SSI, custodian status
-  llm.py          — Nicrron (Fable) calls: parse, explain, draft
-  tools.py        — The 12 pipeline tools
-  tracing.py      — PRISM trajectory + step tracing
-  agent.py        — run_trade(): orchestrates the 12-step pipeline
-  run_batch.py    — CLI: batch run + scorecard vs scenarios.csv
+  agent.py        run_trade(): the 12-step pipeline, v1 and v2 behind a flag
+  tools.py        the checks, decide(), assign_fault(), urgency_for()
+  llm.py          Nicrron calls: parse, explain, draft (temperature 0, regex fallback)
+  tracing.py      PRISM trajectories and per-step traces
+  run_batch.py    batch runner and scorecard
+  data.py         loaders for trades, confirmations, registry, custodian
+  config.py       environment and constants
 data/
-  scenarios.csv   — Answer key (20 trades, expected decisions)
-  ssi_registry.json   — Current SSI (v2 reads this)
-  ssi_snapshot.json   — Stale SSI (v1 reads this)
-  our_confirmations/  — Our SWIFT-style confirmations
-  cpty_confirmations/ — Counterparty confirmations
-  emails/             — Settlement desk emails
+  trades.csv, scenarios.csv          20 trades and the answer key
+  ssi_registry.json                  live instructions with version history (v2)
+  ssi_snapshot.json                  stale copy (v1)
+  our_confirmations/  cpty_confirmations/  emails/
+  build_synthetic.py                 regenerates the whole set
 results/
-  v1.json         — v1 batch results
-  v2.json         — v2 batch results (used by Ninoo UI)
+  v1.json  v2.json                   one row per trade
 ui/
-  NINOO.md        — Ninoo Builder prompt
-  sample_queue.json — Trade queue data for the UI
+  site/App.tsx                       the demo site, single React file
+  sample_queue.json                  trade queue data
 ```
 
-## PRISM proofs
+| Layer | Choice | Why |
+|:--|:--|:--|
+| Model | `anthropic/claude-fable-5-1` via **Nicrron API**, temperature 0 | Reads messy confirmations, writes clear notes |
+| Decisions | Plain Python | Predictable, auditable, same answer every run |
+| Observability | **PRISM by Block Convey** (`prismtrace-sdk`) | Sessions, alerts, root-cause clustering |
+| Demo | **Ninoo Builder**, designed with Kombai in Cursor | One trade, told as a story |
 
-- **Sessions**: Each trade run produces 12 tool steps visible on the PRISM Steps tab
-- **Alert**: v1 crashes on T019/T020 (FileNotFoundError) trigger error-rate alerts
-- **Root Cause**: 8+ crash sessions cluster around the same missing-confirmation bug; v2 fixes them all
+<br />
 
-## Tech stack
+## Design rules we kept
 
-- **Model**: `anthropic/claude-fable-5-1` via [Nicrron API](https://api.nicrron.ai/v1)
-- **Observability**: [PRISM by Block Convey](https://prism.blockconvey.com) via `prismtrace-sdk`
-- **UI**: [Ninoo Builder](https://app.ninoo.ai) (describe → publish)
-- **Data**: 20 synthetic trades, 10 counterparties, realistic SWIFT-format confirmations
+- **The model never decides.** It parses and it drafts. Release, Hold, fault and urgency come from code you can read.
+- **A human approves every action.** Approve adds a note to an outbox. There is no send button.
+- **Live beats cached.** v1's whole failure was reading a snapshot. v2 reads the registry with its version history.
+- **Missing is a finding, not an exception.** No confirmation means Hold and chase, not a crash.
+- **Same inputs, measurable change.** Both versions are scored on the same 20 trades against the same key.
 
-## Docs
+<br />
 
-- [IDEA.md](./IDEA.md) — Full project description
-- [TASK_SPLIT.md](./TASK_SPLIT.md) — Who does what
-- [MONEY_OPERATIONS.md](./MONEY_OPERATIONS.md) — PRISM judging checklist
-- [REALISM.md](./REALISM.md) — Settlement workflow realism notes
+## More
+
+- [IDEA.md](./IDEA.md) · full project write-up
+- [PITCH.md](./PITCH.md) · the pitch
+- [REALISM.md](./REALISM.md) · notes on how real settlement desks work
+- [MONEY_OPERATIONS.md](./MONEY_OPERATIONS.md) · track checklist
+
+<br />
+
+<div align="center">
+<sub>All data is synthetic. Northline Treasury, every counterparty, account number and amount in this repository is fictional.</sub>
+</div>
