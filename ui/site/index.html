@@ -9,6 +9,7 @@
       {
         "imports": {
           "react": "https://esm.sh/react@18.3.1",
+          "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
           "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1"
         }
       }
@@ -17,12 +18,12 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- Local preview only. Ninoo gets Concord.tsx directly. -->
+    <!-- Local preview only. Ninoo gets App.tsx directly. -->
     <script type="module">
-      const src = await (await fetch("./Concord.tsx")).text();
+      const src = await (await fetch("./App.tsx")).text();
       const { code } = Babel.transform(src, {
-        filename: "Concord.tsx",
-        presets: ["typescript", "react"],
+        filename: "App.tsx",
+        presets: ["typescript", ["react", { runtime: "automatic" }]],
       });
       const url = URL.createObjectURL(new Blob([code], { type: "text/javascript" }));
       const { default: Concord } = await import(url);

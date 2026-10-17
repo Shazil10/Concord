@@ -5,6 +5,8 @@
 
 **Concord** checks every trade against every party's confirmation and the latest settlement instructions before money moves. It hands a human one decision: **Release** or **Hold**. Every Hold says whose fault it is and whether to **call** (settles today) or **email**.
 
+**Demo site:** [concord-ten-pi.vercel.app](https://concord-ten-pi.vercel.app/). To redeploy, run `npm install && npx vercel deploy --prod` in `ui/site`.
+
 ## Quick start
 
 ```bash

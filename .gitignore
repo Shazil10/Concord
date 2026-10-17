@@ -16,3 +16,10 @@ venv/
 .DS_Store
 .idea/
 .vscode/
+
+# site build
+ui/site/node_modules/
+ui/site/dist/
+.vercel/
+ui/site/.vercel/
+.kombai/
