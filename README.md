@@ -62,6 +62,57 @@ Something doesn't match. Concord says **what** broke, **whose fault** it is (us 
 
 <br />
 
+## How we met the track rules
+
+The Money Operations track asks for two things: build on **Nicrron × Ninoo**, and prove the agent in **PRISM** with three operations proofs. Concord does all of it, on real runs.
+
+<div align="center">
+
+| Rule | Status | Where to see it |
+|:--|:--:|:--|
+| Every model call goes through the **Nicrron API** | ✅ | `concord/llm.py`, `concord/config.py` |
+| Demo app built and published on **Ninoo Builder** | ✅ | [Live demo](https://empty-react-app-6c23.ninoo.app/) |
+| **PRISM proof 1 · Sessions** with 6+ tool steps | ✅ 12 steps + final answer | [PRISM proofs](#prism-proofs) |
+| **PRISM proof 2 · Alert** firing on a real run | ✅ fired at 6, threshold 5 | [PRISM proofs](#prism-proofs) |
+| **PRISM proof 3 · Root Cause** cluster, then v2 passing on the same inputs | ✅ 52-run cluster, v2 20/20 | [PRISM proofs](#prism-proofs) |
+
+</div>
+
+### Nicrron API: the agent's brain
+
+Every model call in Concord goes through Nicrron. There is no other model provider in the code.
+
+- **Endpoint:** `https://api.nicrron.ai/v1`, called through the OpenAI-compatible client in `concord/llm.py`. The key is read from `NICRRON_API_KEY`.
+- **Model:** `anthropic/claude-fable-5-1` at temperature 0, so the same confirmation gives the same parse every time.
+- **What it does, and only this:**
+  - **Reads** both confirmations (steps 2 and 3), including free-text emails and odd formats, into structured fields. If a parse comes back empty, a rule-based fallback reads the fields from the text.
+  - **Explains** the breaks in plain language for the analyst.
+  - **Drafts** the note to the counterparty (step 12), written for whoever is at fault and as a call script when the trade settles today.
+- **What it never does:** decide. Release or Hold, fault and urgency all come from code in `concord/tools.py`, which is why v2 is repeatable at 20 out of 20.
+
+### Ninoo Builder: the demo app
+
+The demo site was built and published on **Ninoo Builder** and is live at [empty-react-app-6c23.ninoo.app](https://empty-react-app-6c23.ninoo.app/). It walks a judge through one trade as a story: the payment, the bank account that quietly changed, the manual checks that miss it, Concord catching it at step seven, and the PRISM receipts. The source is a single React file, `ui/site/App.tsx`, and every number on it comes from our real `results/v2.json`.
+
+### PRISM: how we found the bugs and proved the fix
+
+Every Concord run is sent to [PRISM by Block Convey](https://prism.blockconvey.com) with `prismtrace-sdk`.
+
+**Proof 1, Sessions.** Each trade is one session made of **12 tool-call steps plus a final answer**: load trade, parse ours, parse theirs, custodian, registry, bank and branch, account check, cross-match, economics, fail cost, decide, draft. Each step records its input, a readable output, latency and token counts. The work is spread across real tools, not hidden inside one big model call.
+
+**Proof 2, Alert.** We set a trace-failure alert on error rate with a threshold of 5. A v1 run that crashes is sent with an **empty output and an error** (`status`, `error_type`, `error_message`), so PRISM counts it as a run that ended with no answer. On real v1 batches the alert **fired at 6 failures**.
+
+**Proof 3, Root Cause.**
+
+1. We flooded PRISM with v1 runs: four wrong releases and two crashes per batch, repeated.
+2. In Traces we ticked the failing runs and ran **Analyse selected**.
+3. On Root Cause we ran **Analyze now**. PRISM grouped the failures into **one cluster of 52 runs** and localised it in the repo. We reviewed it and confirmed the class as a **tool error**.
+4. We shipped v2 (live registry, missing confirmation treated as a break) and **re-ran the same 20 inputs**. They no longer fail: **20 out of 20** correct, zero crashes.
+
+The clearest single example is trade **T019**. On v1 the trace has no output and the error "No counterparty confirmation for T019". On v2, with the same input, the trace says *"Hold: Missing counterparty confirmation — chase required"*. Both screenshots are below.
+
+<br />
+
 ## Before and after
 
 Both versions ran on the **same 20 synthetic trades**, scored against a fixed answer key.
@@ -264,7 +315,7 @@ ui/
 | Model | `anthropic/claude-fable-5-1` via **Nicrron API**, temperature 0 | Reads messy confirmations, writes clear notes |
 | Decisions | Plain Python | Predictable, auditable, same answer every run |
 | Observability | **PRISM by Block Convey** (`prismtrace-sdk`) | Sessions, alerts, root-cause clustering |
-| Demo | **Ninoo Builder**, designed with Kombai in Cursor | One trade, told as a story |
+| Demo app | **Ninoo Builder**, published at `*.ninoo.app` | One trade, told as a story |
 
 <br />
 
