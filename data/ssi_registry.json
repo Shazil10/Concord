@@ -1,0 +1,427 @@
+{
+  "as_of": "2026-10-17",
+  "description": "Fictional standing settlement instructions. The snapshot is the stale cache v1 reads. The registry is current.",
+  "parties": [
+    {
+      "party": "Northline Treasury",
+      "currency": "USD",
+      "purpose": "our_receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "WESTGBLN",
+          "bank_name": "Westferry Bank",
+          "branch": "London",
+          "country": "United Kingdom",
+          "account": "90010001",
+          "account_name": "Northline Treasury USD"
+        }
+      ]
+    },
+    {
+      "party": "Northline Treasury",
+      "currency": "EUR",
+      "purpose": "our_receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "QUAYDEFF",
+          "bank_name": "Quay and Company",
+          "branch": "Frankfurt",
+          "country": "Germany",
+          "account": "90020001",
+          "account_name": "Northline Treasury EUR"
+        }
+      ]
+    },
+    {
+      "party": "Northline Treasury",
+      "currency": "GBP",
+      "purpose": "our_receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "WESTGBLN",
+          "bank_name": "Westferry Bank",
+          "branch": "London",
+          "country": "United Kingdom",
+          "account": "90030001",
+          "account_name": "Northline Treasury GBP"
+        }
+      ]
+    },
+    {
+      "party": "Northline Treasury",
+      "currency": "JPY",
+      "purpose": "our_receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "PINESGSG",
+          "bank_name": "Pine Custody",
+          "branch": "Singapore",
+          "country": "Singapore",
+          "account": "90040001",
+          "account_name": "Northline Treasury JPY"
+        }
+      ]
+    },
+    {
+      "party": "Lumen Markets",
+      "currency": "USD",
+      "purpose": "operating",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "FNBKUSNY",
+          "bank_name": "Fable National",
+          "branch": "New York",
+          "country": "United States",
+          "account": "90011001",
+          "account_name": "Lumen Markets operating"
+        }
+      ]
+    },
+    {
+      "party": "Lumen Markets",
+      "currency": "USD",
+      "purpose": "collateral",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "FNBKUSNY",
+          "bank_name": "Fable National",
+          "branch": "New York",
+          "country": "United States",
+          "account": "90011099",
+          "account_name": "Lumen Markets collateral"
+        }
+      ]
+    },
+    {
+      "party": "Kite Rowan Securities",
+      "currency": "USD",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "WESTGBLN",
+          "bank_name": "Westferry Bank",
+          "branch": "London",
+          "country": "United Kingdom",
+          "account": "90021001",
+          "account_name": "Kite Rowan USD"
+        }
+      ]
+    },
+    {
+      "party": "Kite Rowan Securities",
+      "currency": "EUR",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "QUAYDEFF",
+          "bank_name": "Quay and Company",
+          "branch": "Frankfurt",
+          "country": "Germany",
+          "account": "90022001",
+          "account_name": "Kite Rowan EUR"
+        }
+      ]
+    },
+    {
+      "party": "Kite Rowan Securities",
+      "currency": "GBP",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "WESTGBLN",
+          "bank_name": "Westferry Bank",
+          "branch": "London",
+          "country": "United Kingdom",
+          "account": "90023001",
+          "account_name": "Kite Rowan GBP"
+        }
+      ]
+    },
+    {
+      "party": "Sable Fund Services",
+      "currency": "USD",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "LARKCHZH",
+          "bank_name": "Lark Clearing",
+          "branch": "Zurich",
+          "country": "Switzerland",
+          "account": "90031001",
+          "account_name": "Sable Fund Services USD"
+        }
+      ]
+    },
+    {
+      "party": "Veldt Capital",
+      "currency": "USD",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "LARKCHZH",
+          "bank_name": "Lark Clearing",
+          "branch": "Zurich",
+          "country": "Switzerland",
+          "account": "90041001",
+          "account_name": "Veldt Capital USD"
+        }
+      ]
+    },
+    {
+      "party": "Veldt Capital",
+      "currency": "JPY",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "PINESGSG",
+          "bank_name": "Pine Custody",
+          "branch": "Singapore",
+          "country": "Singapore",
+          "account": "90042001",
+          "account_name": "Veldt Capital JPY"
+        }
+      ]
+    },
+    {
+      "party": "Quill Asset Management",
+      "currency": "EUR",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "MOORNLAM",
+          "bank_name": "Moor and Holt",
+          "branch": "Amsterdam",
+          "country": "Netherlands",
+          "account": "90082001",
+          "account_name": "Quill Asset Management EUR"
+        }
+      ]
+    },
+    {
+      "party": "Marlow Brothers",
+      "currency": "USD",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "FNBKUSNY",
+          "bank_name": "Fable National",
+          "branch": "New York",
+          "country": "United States",
+          "account": "90033001",
+          "account_name": "Marlow Brothers USD"
+        }
+      ]
+    },
+    {
+      "party": "Marlow Brothers",
+      "currency": "EUR",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "QUAYDEFF",
+          "bank_name": "Quay and Company",
+          "branch": "Frankfurt",
+          "country": "Germany",
+          "account": "90034001",
+          "account_name": "Marlow Brothers EUR"
+        }
+      ]
+    },
+    {
+      "party": "Birch Capital",
+      "currency": "USD",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "FNBKUSNY",
+          "bank_name": "Fable National",
+          "branch": "New York",
+          "country": "United States",
+          "account": "90051000",
+          "account_name": "Birch Capital USD old"
+        },
+        {
+          "version": 2,
+          "effective_from": "2026-09-15",
+          "bank_code": "FNBKUSNY",
+          "bank_name": "Fable National",
+          "branch": "New York",
+          "country": "United States",
+          "account": "90051001",
+          "account_name": "Birch Capital USD"
+        }
+      ]
+    },
+    {
+      "party": "Birch Capital",
+      "currency": "EUR",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "QUAYDEFF",
+          "bank_name": "Quay and Company",
+          "branch": "Frankfurt",
+          "country": "Germany",
+          "account": "90052000",
+          "account_name": "Birch Capital EUR old"
+        },
+        {
+          "version": 2,
+          "effective_from": "2026-10-01",
+          "bank_code": "QUAYDEFF",
+          "bank_name": "Quay and Company",
+          "branch": "Frankfurt",
+          "country": "Germany",
+          "account": "90052002",
+          "account_name": "Birch Capital EUR"
+        }
+      ]
+    },
+    {
+      "party": "Holm Securities",
+      "currency": "USD",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "WESTGBLN",
+          "bank_name": "Westferry Bank",
+          "branch": "London",
+          "country": "United Kingdom",
+          "account": "90061000",
+          "account_name": "Holm Securities USD old"
+        },
+        {
+          "version": 2,
+          "effective_from": "2026-08-01",
+          "bank_code": "WESTGBLN",
+          "bank_name": "Westferry Bank",
+          "branch": "London",
+          "country": "United Kingdom",
+          "account": "90061001",
+          "account_name": "Holm Securities USD"
+        }
+      ]
+    },
+    {
+      "party": "Orion Desk",
+      "currency": "USD",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "FNBKUSNY",
+          "bank_name": "Fable National",
+          "branch": "New York",
+          "country": "United States",
+          "account": "90081001",
+          "account_name": "Orion Desk USD"
+        }
+      ]
+    },
+    {
+      "party": "Pebble Street Capital",
+      "currency": "USD",
+      "purpose": "growth",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "PINESGSG",
+          "bank_name": "Pine Custody",
+          "branch": "Singapore",
+          "country": "Singapore",
+          "account": "90071001",
+          "account_name": "Pebble Street growth"
+        }
+      ]
+    },
+    {
+      "party": "Pebble Street Capital",
+      "currency": "USD",
+      "purpose": "income",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "PINESGSG",
+          "bank_name": "Pine Custody",
+          "branch": "Singapore",
+          "country": "Singapore",
+          "account": "90071002",
+          "account_name": "Pebble Street income"
+        }
+      ]
+    },
+    {
+      "party": "Cedar Point Markets",
+      "currency": "JPY",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "PINESGSG",
+          "bank_name": "Pine Custody",
+          "branch": "Singapore",
+          "country": "Singapore",
+          "account": "90091001",
+          "account_name": "Cedar Point JPY"
+        }
+      ]
+    },
+    {
+      "party": "Cedar Point Markets",
+      "currency": "USD",
+      "purpose": "receive",
+      "history": [
+        {
+          "version": 1,
+          "effective_from": "2024-01-01",
+          "bank_code": "PINESGSG",
+          "bank_name": "Pine Custody",
+          "branch": "Singapore",
+          "country": "Singapore",
+          "account": "90091002",
+          "account_name": "Cedar Point USD"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T004
+Product: FX
+Counterparty: Veldt Capital
+Trade date: 2026-10-16
+Settle date: 2026-10-20
+Our side: BUY
+We buy: JPY 750,000,000
+We sell: USD 5,000,000
+Rate: 150.00
+
+Our payment instruction
+Pay to bank code: LARKCHZH
+Pay to bank: Lark Clearing
+Pay to branch: Zurich
+Pay to country: Switzerland
+Pay to account: 90041001
+Pay to account name: Veldt Capital USD
+
+Our receive instruction
+Receive at bank code: PINESGSG
+Receive at bank: Pine Custody
+Receive at branch: Singapore
+Receive at country: Singapore
+Receive at account: 90040001
+Receive at account name: Northline Treasury JPY
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

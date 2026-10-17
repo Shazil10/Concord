@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T013
+Product: FX
+Counterparty: Cedar Point Markets
+Trade date: 2026-10-16
+Settle date: 2026-10-22
+Our side: BUY
+We buy: JPY 300,000,000
+We sell: USD 2,000,000
+Rate: 150.00
+
+Our payment instruction
+Pay to bank code: PINESGSG
+Pay to bank: Pine Custody
+Pay to branch: Singapore
+Pay to country: Singapore
+Pay to account: 90091002
+Pay to account name: Cedar Point USD
+
+Our receive instruction
+Receive at bank code: PINESGSG
+Receive at bank: Pine Custody
+Receive at branch: Singapore
+Receive at country: Singapore
+Receive at account: 90040001
+Receive at account name: Northline Treasury JPY
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

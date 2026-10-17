@@ -1,0 +1,9 @@
+note from Pebble Street Capital ops — please ignore the footer, the fax header was wrong
+value date 17/10/2026
+ref T012
+bond PBBL 5.00 15JAN2030 nominal 2,500,000 price 100.00 cash USD 2,500,000
+acct no. 90071001
+bank Pine Custody / Chicago / code PINEUSCH
+country United States
+your trade date was 16.10.2026
+kind regards, settlements

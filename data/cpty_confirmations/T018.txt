@@ -1,0 +1,20 @@
+COUNTERPARTY CONFIRMATION
+From: Sable Fund Services
+Re: T018
+Trade date 2026-10-15 value 2026-10-21
+We confirm the following, copied from your recap:
+We pay USD 3,060,000.
+We receive the other side into our own book.
+Please pay us at the account below, which is your receive account, not ours.
+Pay to bank code: WESTGBLN
+Pay to bank: Westferry Bank
+Pay to branch: London
+Pay to country: United Kingdom
+Pay to account: 90010001
+Pay to account name: Northline Treasury USD
+Receive at bank code: LARKCHZH
+Receive at bank: Lark Clearing
+Receive at branch: Zurich
+Receive at country: Switzerland
+Receive at account: 90031001
+Receive at account name: Sable Fund Services USD

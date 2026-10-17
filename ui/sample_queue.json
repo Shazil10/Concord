@@ -1,0 +1,206 @@
+{
+  "as_of": "2026-10-17",
+  "desk": "Northline Treasury",
+  "trades": [
+    {
+      "trade_id": "T001",
+      "product": "FX",
+      "counterparty": "Lumen Markets",
+      "settle_date": "2026-10-17",
+      "decision": "Release",
+      "fault": "none",
+      "failure_type": "clean",
+      "summary": "Clean FX spot. Both confirms use the current operating account."
+    },
+    {
+      "trade_id": "T002",
+      "product": "FX",
+      "counterparty": "Kite Rowan Securities",
+      "settle_date": "2026-10-21",
+      "decision": "Release",
+      "fault": "none",
+      "failure_type": "clean",
+      "summary": "Clean FX forward."
+    },
+    {
+      "trade_id": "T003",
+      "product": "BOND",
+      "counterparty": "Sable Fund Services",
+      "settle_date": "2026-10-19",
+      "decision": "Release",
+      "fault": "none",
+      "failure_type": "clean",
+      "summary": "Clean bond purchase. Cash settlement amount is price times quantity over 100."
+    },
+    {
+      "trade_id": "T004",
+      "product": "FX",
+      "counterparty": "Veldt Capital",
+      "settle_date": "2026-10-20",
+      "decision": "Release",
+      "fault": "none",
+      "failure_type": "clean",
+      "summary": "Clean FX spot."
+    },
+    {
+      "trade_id": "T005",
+      "product": "BOND",
+      "counterparty": "Quill Asset Management",
+      "settle_date": "2026-10-21",
+      "decision": "Release",
+      "fault": "none",
+      "failure_type": "clean",
+      "summary": "Clean bond sale. Cash is paid to our EUR account. Their confirm names that same account."
+    },
+    {
+      "trade_id": "T006",
+      "product": "FX",
+      "counterparty": "Marlow Brothers",
+      "settle_date": "2026-10-19",
+      "decision": "Release",
+      "fault": "none",
+      "failure_type": "clean",
+      "summary": "Clean FX spot. We pay EUR."
+    },
+    {
+      "trade_id": "T007",
+      "product": "FX",
+      "counterparty": "Birch Capital",
+      "settle_date": "2026-10-19",
+      "decision": "Hold",
+      "fault": "us",
+      "failure_type": "stale_ssi",
+      "summary": "Stale USD account 90051000 on both confirms. Registry version 2 is 90051001 from 2026-09-15. Email asks us to update. v1 snapshot still has version 1, so v1 can wrongly Release."
+    },
+    {
+      "trade_id": "T008",
+      "product": "FX",
+      "counterparty": "Birch Capital",
+      "settle_date": "2026-10-17",
+      "decision": "Hold",
+      "fault": "us",
+      "failure_type": "stale_ssi",
+      "summary": "Settles today. Stale EUR account 90052000. Registry version 2 is 90052002 from 2026-10-01. Urgency: call, do not wait on email. Scorecard decision stays Hold."
+    },
+    {
+      "trade_id": "T009",
+      "product": "BOND",
+      "counterparty": "Holm Securities",
+      "settle_date": "2026-10-21",
+      "decision": "Hold",
+      "fault": "us",
+      "failure_type": "stale_ssi",
+      "summary": "Bond. Stale USD account 90061000. Registry version 2 is 90061001 from 2026-08-01."
+    },
+    {
+      "trade_id": "T010",
+      "product": "FX",
+      "counterparty": "Holm Securities",
+      "settle_date": "2026-10-20",
+      "decision": "Hold",
+      "fault": "us",
+      "failure_type": "stale_ssi",
+      "summary": "Stale USD account 90061000. Same Holm change as T009. Email is enough; value date is 2026-10-20."
+    },
+    {
+      "trade_id": "T011",
+      "product": "FX",
+      "counterparty": "Orion Desk",
+      "settle_date": "2026-10-19",
+      "decision": "Hold",
+      "fault": "counterparty",
+      "failure_type": "wrong_branch",
+      "summary": "Same institution, wrong branch. Registry and our confirm: Fable National New York FNBKUSNY. Their confirm: Fable National Seoul FNBKKRSE. Account number matches."
+    },
+    {
+      "trade_id": "T012",
+      "product": "BOND",
+      "counterparty": "Pebble Street Capital",
+      "settle_date": "2026-10-17",
+      "decision": "Hold",
+      "fault": "counterparty",
+      "failure_type": "wrong_branch",
+      "summary": "Settles today. Growth account 90071001 is right, but their confirm names Pine Custody Chicago instead of Singapore. Urgency: call. Scorecard decision stays Hold."
+    },
+    {
+      "trade_id": "T013",
+      "product": "FX",
+      "counterparty": "Cedar Point Markets",
+      "settle_date": "2026-10-22",
+      "decision": "Hold",
+      "fault": "counterparty",
+      "failure_type": "wrong_branch",
+      "summary": "Their confirm sends our USD to Pine Custody Chicago. Registry says Pine Custody Singapore, same account number 90091002."
+    },
+    {
+      "trade_id": "T014",
+      "product": "FX",
+      "counterparty": "Pebble Street Capital",
+      "settle_date": "2026-10-19",
+      "decision": "Hold",
+      "fault": "counterparty",
+      "failure_type": "shared_code_wrong_account",
+      "summary": "Same bank code PINESGSG. This trade belongs to the growth account 90071001. Their confirm uses the income account 90071002."
+    },
+    {
+      "trade_id": "T015",
+      "product": "BOND",
+      "counterparty": "Pebble Street Capital",
+      "settle_date": "2026-10-21",
+      "decision": "Hold",
+      "fault": "us",
+      "failure_type": "shared_code_wrong_account",
+      "summary": "Our confirm pays the income account 90071002. Their confirm and the growth purpose on the trade say 90071001. Fault is us. Bank code PINESGSG matches either way."
+    },
+    {
+      "trade_id": "T016",
+      "product": "FX",
+      "counterparty": "Lumen Markets",
+      "settle_date": "2026-10-20",
+      "decision": "Hold",
+      "fault": "us",
+      "failure_type": "shared_code_wrong_account",
+      "summary": "Our confirm uses Lumen's collateral account 90011099. Their confirm uses the operating account 90011001. Same bank code FNBKUSNY. Fault is us."
+    },
+    {
+      "trade_id": "T017",
+      "product": "FX",
+      "counterparty": "Kite Rowan Securities",
+      "settle_date": "2026-10-19",
+      "decision": "Hold",
+      "fault": "counterparty",
+      "failure_type": "swapped_sides",
+      "summary": "We pay USD and receive EUR. Their confirm copies our direction: they also say they pay USD and receive EUR. Our pay must match their receive."
+    },
+    {
+      "trade_id": "T018",
+      "product": "BOND",
+      "counterparty": "Sable Fund Services",
+      "settle_date": "2026-10-21",
+      "decision": "Hold",
+      "fault": "counterparty",
+      "failure_type": "swapped_sides",
+      "summary": "We buy the bond and pay USD. Their confirm says they pay the cash and we deliver the bond."
+    },
+    {
+      "trade_id": "T019",
+      "product": "FX",
+      "counterparty": "Quill Asset Management",
+      "settle_date": "2026-10-17",
+      "decision": "Hold",
+      "fault": "counterparty",
+      "failure_type": "missing_cpty_confirm",
+      "summary": "No counterparty confirmation file. Settles today. v1 should crash with no decision. v2 should Hold and chase. Urgency: call."
+    },
+    {
+      "trade_id": "T020",
+      "product": "BOND",
+      "counterparty": "Veldt Capital",
+      "settle_date": "2026-10-23",
+      "decision": "Hold",
+      "fault": "counterparty",
+      "failure_type": "missing_cpty_confirm",
+      "summary": "No counterparty confirmation file. Value date is 2026-10-23, so an email chase is enough. v1 crashes. v2 Holds."
+    }
+  ]
+}

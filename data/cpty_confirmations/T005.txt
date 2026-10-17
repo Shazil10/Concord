@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Quill Asset Management
+Trade id: T005
+Trade date: 2026-10-14
+Value date: 2026-10-21
+We receive the cash you pay. You receive the other side.
+Security HBND 3.10 01MAR2029, quantity 4,000,000, price 101.25.
+Cash EUR 4,050,000.
+Pay cash to bank code: QUAYDEFF
+Pay cash to bank: Quay and Company
+Pay cash to branch: Frankfurt
+Pay cash to country: Germany
+Pay cash to account: 90020001
+Pay cash to account name: Northline Treasury EUR

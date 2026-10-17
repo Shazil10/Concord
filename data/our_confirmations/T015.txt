@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T015
+Product: BOND
+Counterparty: Pebble Street Capital
+Trade date: 2026-10-14
+Settle date: 2026-10-21
+Our side: BUY
+Security: PBBL 4.00 01NOV2030
+Quantity: 8,000,000
+Price: 97.25
+
+Our payment instruction
+Pay to bank code: PINESGSG
+Pay to bank: Pine Custody
+Pay to branch: Singapore
+Pay to country: Singapore
+Pay to account: 90071002
+Pay to account name: Pebble Street income
+
+Our receive instruction
+Receive at bank code: WESTGBLN
+Receive at bank: Westferry Bank
+Receive at branch: London
+Receive at country: United Kingdom
+Receive at account: 90010001
+Receive at account name: Northline Treasury USD
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.

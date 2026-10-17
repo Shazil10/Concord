@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Birch Capital
+Trade id: T007
+Trade date: 2026-10-15
+Value date: 2026-10-19
+We receive the cash you pay. You receive the other side.
+You buy EUR 1,200,000.
+You sell USD 1,308,000 at 1.0900.
+Pay cash to bank code: FNBKUSNY
+Pay cash to bank: Fable National
+Pay cash to branch: New York
+Pay cash to country: United States
+Pay cash to account: 90051000
+Pay cash to account name: Birch Capital USD old

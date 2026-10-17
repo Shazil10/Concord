@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Sable Fund Services
+Trade id: T003
+Trade date: 2026-10-16
+Value date: 2026-10-19
+We receive the cash you pay. You receive the other side.
+Security NLGV 4.25 15JUN2031, quantity 10,000,000, price 98.50.
+Cash USD 9,850,000.
+Pay cash to bank code: LARKCHZH
+Pay cash to bank: Lark Clearing
+Pay cash to branch: Zurich
+Pay cash to country: Switzerland
+Pay cash to account: 90031001
+Pay cash to account name: Sable Fund Services USD

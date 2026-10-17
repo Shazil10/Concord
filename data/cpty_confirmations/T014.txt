@@ -1,0 +1,9 @@
+note from Pebble Street Capital ops — please ignore the footer, the fax header was wrong
+value date 19/10/2026
+ref T014
+we see you buying EUR 700,000 against USD 763,000 at 1.0900
+acct no. 90071002
+bank Pine Custody / Singapore / code PINESGSG
+country Singapore
+your trade date was 15.10.2026
+kind regards, settlements

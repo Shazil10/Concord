@@ -1,0 +1,21 @@
+trade_id,custodian,status,expected_amount,expected_ccy,value_date,notes
+T001,Westferry Investor Services,READY,5450000,USD,2026-10-17,Clean FX spot. Both confirms use the current operating account.
+T002,Westferry Investor Services,READY,2540000,USD,2026-10-21,Clean FX forward.
+T003,Lark Clearing,READY,9850000,USD,2026-10-19,Clean bond purchase. Cash settlement amount is price times quantity over 100.
+T004,Pine Custody Services,READY,5000000,USD,2026-10-20,Clean FX spot.
+T005,Moor and Holt,READY,4050000,EUR,2026-10-21,Clean bond sale. Cash is paid to our EUR account. Their confirm names that same account.
+T006,Quay and Company,READY,2760000,EUR,2026-10-19,Clean FX spot. We pay EUR.
+T007,Westferry Investor Services,INSTRUCTION_HELD,1308000,USD,2026-10-19,"Stale USD account 90051000 on both confirms. Registry version 2 is 90051001 from 2026-09-15. Email asks us to update. v1 snapshot still has version 1, so v1 can wrongly Release."
+T008,Quay and Company,INSTRUCTION_HELD,940000,EUR,2026-10-17,"Settles today. Stale EUR account 90052000. Registry version 2 is 90052002 from 2026-10-01. Urgency: call, do not wait on email. Scorecard decision stays Hold."
+T009,Westferry Investor Services,INSTRUCTION_HELD,5940000,USD,2026-10-21,Bond. Stale USD account 90061000. Registry version 2 is 90061001 from 2026-08-01.
+T010,Westferry Investor Services,INSTRUCTION_HELD,2725000,USD,2026-10-20,Stale USD account 90061000. Same Holm change as T009. Email is enough; value date is 2026-10-20.
+T011,Fable National New York,INSTRUCTION_HELD,981000,USD,2026-10-19,"Same institution, wrong branch. Registry and our confirm: Fable National New York FNBKUSNY. Their confirm: Fable National Seoul FNBKKRSE. Account number matches."
+T012,Pine Custody Services,INSTRUCTION_HELD,2500000,USD,2026-10-17,"Settles today. Growth account 90071001 is right, but their confirm names Pine Custody Chicago instead of Singapore. Urgency: call. Scorecard decision stays Hold."
+T013,Pine Custody Services,INSTRUCTION_HELD,2000000,USD,2026-10-22,"Their confirm sends our USD to Pine Custody Chicago. Registry says Pine Custody Singapore, same account number 90091002."
+T014,Pine Custody Services,INSTRUCTION_HELD,763000,USD,2026-10-19,Same bank code PINESGSG. This trade belongs to the growth account 90071001. Their confirm uses the income account 90071002.
+T015,Pine Custody Services,INSTRUCTION_HELD,7780000,USD,2026-10-21,Our confirm pays the income account 90071002. Their confirm and the growth purpose on the trade say 90071001. Fault is us. Bank code PINESGSG matches either way.
+T016,Fable National New York,INSTRUCTION_HELD,1635000,USD,2026-10-20,Our confirm uses Lumen's collateral account 90011099. Their confirm uses the operating account 90011001. Same bank code FNBKUSNY. Fault is us.
+T017,Westferry Investor Services,INSTRUCTION_HELD,1090000,USD,2026-10-19,We pay USD and receive EUR. Their confirm copies our direction: they also say they pay USD and receive EUR. Our pay must match their receive.
+T018,Lark Clearing,INSTRUCTION_HELD,3060000,USD,2026-10-21,We buy the bond and pay USD. Their confirm says they pay the cash and we deliver the bond.
+T019,Moor and Holt,AWAITING_CONFIRMATION,1500000,EUR,2026-10-17,No counterparty confirmation file. Settles today. v1 should crash with no decision. v2 should Hold and chase. Urgency: call.
+T020,Lark Clearing,AWAITING_CONFIRMATION,5025000,USD,2026-10-23,"No counterparty confirmation file. Value date is 2026-10-23, so an email chase is enough. v1 crashes. v2 Holds."

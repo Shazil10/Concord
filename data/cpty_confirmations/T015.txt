@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Pebble Street Capital
+Trade id: T015
+Trade date: 2026-10-14
+Value date: 2026-10-21
+We receive the cash you pay. You receive the other side.
+Security PBBL 4.00 01NOV2030, quantity 8,000,000, price 97.25.
+Cash USD 7,780,000.
+Pay cash to bank code: PINESGSG
+Pay cash to bank: Pine Custody
+Pay cash to branch: Singapore
+Pay cash to country: Singapore
+Pay cash to account: 90071001
+Pay cash to account name: Pebble Street growth

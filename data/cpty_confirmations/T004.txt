@@ -1,0 +1,14 @@
+COUNTERPARTY CONFIRMATION
+From: Veldt Capital
+Trade id: T004
+Trade date: 2026-10-16
+Value date: 2026-10-20
+We receive the cash you pay. You receive the other side.
+You buy JPY 750,000,000.
+You sell USD 5,000,000 at 150.00.
+Pay cash to bank code: LARKCHZH
+Pay cash to bank: Lark Clearing
+Pay cash to branch: Zurich
+Pay cash to country: Switzerland
+Pay cash to account: 90041001
+Pay cash to account name: Veldt Capital USD

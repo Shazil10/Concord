@@ -1,0 +1,30 @@
+OUR CONFIRMATION
+Sender: Northline Treasury
+Trade id: T018
+Product: BOND
+Counterparty: Sable Fund Services
+Trade date: 2026-10-15
+Settle date: 2026-10-21
+Our side: BUY
+Security: SBLB 4.00 01NOV2030
+Quantity: 3,000,000
+Price: 102.00
+
+Our payment instruction
+Pay to bank code: LARKCHZH
+Pay to bank: Lark Clearing
+Pay to branch: Zurich
+Pay to country: Switzerland
+Pay to account: 90031001
+Pay to account name: Sable Fund Services USD
+
+Our receive instruction
+Receive at bank code: WESTGBLN
+Receive at bank: Westferry Bank
+Receive at branch: London
+Receive at country: United Kingdom
+Receive at account: 90010001
+Receive at account name: Northline Treasury USD
+
+Economics agree with the front-office booking.
+Nothing in this message has been sent to a network.
