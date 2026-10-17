@@ -11,4 +11,4 @@ Pay cash to bank: Fable National
 Pay cash to branch: New York
 Pay cash to country: United States
 Pay cash to account: 90051000
-Pay cash to account name: Birch Capital USD old
+Pay cash to account name: Birch Capital USD

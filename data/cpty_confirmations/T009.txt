@@ -11,4 +11,4 @@ Pay cash to bank: Westferry Bank
 Pay cash to branch: London
 Pay cash to country: United Kingdom
 Pay cash to account: 90061000
-Pay cash to account name: Holm Securities USD old
+Pay cash to account name: Holm Securities USD

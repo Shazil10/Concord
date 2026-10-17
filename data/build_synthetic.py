@@ -130,7 +130,7 @@ PARTIES: list[dict] = [
         "currency": "USD",
         "purpose": "receive",
         "history": [
-            {"version": 1, "effective_from": "2024-01-01", **acct("FNBKUSNY", "90051000", "Birch Capital USD old")},
+            {"version": 1, "effective_from": "2024-01-01", **acct("FNBKUSNY", "90051000", "Birch Capital USD")},
             {"version": 2, "effective_from": "2026-09-15", **acct("FNBKUSNY", "90051001", "Birch Capital USD")},
         ],
     },
@@ -139,7 +139,7 @@ PARTIES: list[dict] = [
         "currency": "EUR",
         "purpose": "receive",
         "history": [
-            {"version": 1, "effective_from": "2024-01-01", **acct("QUAYDEFF", "90052000", "Birch Capital EUR old")},
+            {"version": 1, "effective_from": "2024-01-01", **acct("QUAYDEFF", "90052000", "Birch Capital EUR")},
             {"version": 2, "effective_from": "2026-10-01", **acct("QUAYDEFF", "90052002", "Birch Capital EUR")},
         ],
     },
@@ -148,7 +148,7 @@ PARTIES: list[dict] = [
         "currency": "USD",
         "purpose": "receive",
         "history": [
-            {"version": 1, "effective_from": "2024-01-01", **acct("WESTGBLN", "90061000", "Holm Securities USD old")},
+            {"version": 1, "effective_from": "2024-01-01", **acct("WESTGBLN", "90061000", "Holm Securities USD")},
             {"version": 2, "effective_from": "2026-08-01", **acct("WESTGBLN", "90061001", "Holm Securities USD")},
         ],
     },
@@ -243,7 +243,7 @@ TRADES: list[dict] = [
          notes="Clean bond sale. Cash is paid to our EUR account. Their confirm names that same account."),
     dict(trade_id="T006", product="FX", failure_type="clean", expected_decision="Release", expected_fault="none",
          counterparty="Marlow Brothers", side="BUY", trade_date="2026-10-16", settle_date="2026-10-19",
-         ccy_bought="USD", amount_bought="3000000", ccy_sold="EUR", amount_sold="2760000", rate_or_price="1.0870",
+         ccy_bought="USD", amount_bought="3000120", ccy_sold="EUR", amount_sold="2760000", rate_or_price="1.0870",
          security_id="", quantity="", settlement_location="Frankfurt",
          pay=latest("Marlow Brothers", "EUR"), receive=our("USD"),
          custodian="Quay and Company", custodian_status="READY",
@@ -305,7 +305,7 @@ TRADES: list[dict] = [
          pay=latest("Cedar Point Markets", "JPY"), receive=our("JPY"),
          cpty_pay=acct("PINEUSCH", "90091001", "Cedar Point JPY"),
          custodian="Pine Custody Services", custodian_status="INSTRUCTION_HELD",
-         notes="We pay USD to them? No: we buy JPY and sell USD, so we pay USD. Their JPY account is where they would receive if sides were flipped. This trade we pay USD. Wait."),
+         notes="Their confirm sends our USD to Pine Custody Chicago."),
 ]
 
 # T013 correction is applied below after the list is reviewed in code.
@@ -384,6 +384,18 @@ TRADES.extend([
 ])
 
 
+# What a custodian knows before our instruction arrives: the cash it expects and its cutoff.
+# It does not know whether either confirmation is right.
+CUTOFFS = {
+    "Westferry Investor Services": "Cash cutoff 15:00 London",
+    "Lark Clearing": "Cash cutoff 14:00 Zurich",
+    "Pine Custody Services": "Cash cutoff 16:00 Singapore",
+    "Moor and Holt": "Cash cutoff 15:30 Amsterdam",
+    "Quay and Company": "Cash cutoff 15:00 Frankfurt",
+    "Fable National New York": "Cash cutoff 17:00 New York",
+}
+
+
 def money(currency: str, amount: str) -> str:
     if not currency or not amount:
         return ""
@@ -434,7 +446,7 @@ def our_text(trade: dict) -> str:
         lines += ssi_block("Pay to", pay)
         lines += ["", "Our receive instruction"]
         lines += ssi_block("Receive at", receive)
-    lines += ["", "Economics agree with the front-office booking.", "Nothing in this message has been sent to a network."]
+    lines += ["", "Nothing in this message has been sent to a network."]
     return "\n".join(lines) + "\n"
 
 
@@ -448,11 +460,14 @@ def cpty_text(trade: dict) -> str:
             f"From: {trade['counterparty']}",
             f"Re: {trade['trade_id']}",
             f"Trade date {trade['trade_date']} value {trade['settle_date']}",
-            "We confirm the following, copied from your recap:",
-            f"We pay {money(trade['ccy_sold'], trade['amount_sold']) or money('USD', trade['amount_sold'])}.",
-            f"We receive the other side into our own book.",
-            "Please pay us at the account below, which is your receive account, not ours.",
+            "We confirm the following:",
         ]
+        if trade["product"] == "FX":
+            lines.append(f"We buy {money(trade['ccy_bought'], trade['amount_bought'])}.")
+            lines.append(f"We sell {money(trade['ccy_sold'], trade['amount_sold'])} at {trade['rate_or_price']}.")
+        else:
+            lines.append(f"We buy {trade['security_id']}, quantity {int(trade['quantity']):,}, price {trade['rate_or_price']}.")
+            lines.append(f"We pay cash {money(trade['ccy_sold'], trade['amount_sold'])}.")
         lines += ssi_block("Pay to", receive)
         lines += ssi_block("Receive at", pay)
         return "\n".join(lines) + "\n"
@@ -540,7 +555,7 @@ def registry_payload(snapshot: bool) -> dict:
         })
     return {
         "as_of": "2026-08-01" if snapshot else "2026-10-17",
-        "description": "Fictional standing settlement instructions. The snapshot is the stale cache v1 reads. The registry is current.",
+        "description": "Fictional standing settlement instructions.",
         "parties": parties,
     }
 
@@ -582,11 +597,11 @@ def main() -> None:
         custodian_rows.append({
             "trade_id": trade["trade_id"],
             "custodian": trade["custodian"],
-            "status": trade["custodian_status"],
+            "status": "AWAITING_INSTRUCTION",
             "expected_amount": amount,
             "expected_ccy": currency,
             "value_date": trade["settle_date"],
-            "notes": trade["notes"],
+            "notes": CUTOFFS[trade["custodian"]],
         })
         (ROOT / "our_confirmations" / f"{trade['trade_id']}.txt").write_text(our_text(trade))
         if not trade.get("missing_cpty"):

@@ -26,5 +26,4 @@ Receive at country: United Kingdom
 Receive at account: 90010001
 Receive at account name: Northline Treasury USD
 
-Economics agree with the front-office booking.
 Nothing in this message has been sent to a network.

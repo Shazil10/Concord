@@ -34,7 +34,7 @@ Same institution, two branches, in `bank_directory.csv`:
 
 ## Answer key
 
-`scenarios.csv` is the scorecard. `expected_decision` is Release or Hold. Same-day breaks stay **Hold** on the scorecard. Urgency is separate: call when the note says so, email otherwise.
+`scenarios.csv` is the scorecard. **The agent never reads it, or this README.** Only the scorecard does. Every other file holds only what that party would really know: the custodian expects cash and has a cutoff, nothing more. `expected_decision` is Release or Hold. Same-day breaks stay **Hold** on the scorecard. Urgency is separate: call when the note says so, email otherwise.
 
 | failure_type | trades | v1 mistake | v2 result |
 |---|---|---|---|

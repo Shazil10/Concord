@@ -11,4 +11,4 @@ Pay cash to bank: Quay and Company
 Pay cash to branch: Frankfurt
 Pay cash to country: Germany
 Pay cash to account: 90052000
-Pay cash to account name: Birch Capital EUR old
+Pay cash to account name: Birch Capital EUR

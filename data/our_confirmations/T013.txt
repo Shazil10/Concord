@@ -26,5 +26,4 @@ Receive at country: Singapore
 Receive at account: 90040001
 Receive at account name: Northline Treasury JPY
 
-Economics agree with the front-office booking.
 Nothing in this message has been sent to a network.
