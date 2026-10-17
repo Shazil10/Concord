@@ -12,7 +12,7 @@ from concord.config import CONCORD_MODEL, DEMO_DATE
 from concord.tracing import get_client, step
 
 
-def run_trade(trade_id: str, version: str) -> dict:
+def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
     """Run the full pipeline for one trade. Returns the result dict.
 
     version is "v1" or "v2". v1 has deliberate bugs (stale SSI, crash on
@@ -71,7 +71,7 @@ def run_trade(trade_id: str, version: str) -> dict:
 
         # If v1 crashes, stop here
         if error_out and version == "v1":
-            _send_trajectory(pt, steps, session_id, version, trade_id, product, "error")
+            _send_trajectory(pt, steps, session_id, version, trade_id, product, "error", "crash")
             raise error_out
 
         # ── Step 4: get_custodian_status ─────────────────────────────
@@ -202,12 +202,21 @@ def run_trade(trade_id: str, version: str) -> dict:
         result["urgency"] = "call" if settle_date <= DEMO_DATE else "email"
         result["reason"] = "Missing counterparty confirmation — chase required"
 
-    _send_trajectory(pt, steps, session_id, version, trade_id, product, final_status)
+    def _emit(outcome: str, status: str) -> None:
+        _send_trajectory(
+            pt, steps, session_id, version, trade_id, product, status, outcome
+        )
+
+    if emit:
+        auto_outcome = "error" if error_out else "completed"
+        _emit(auto_outcome, final_status)
+    else:
+        result["_emit"] = _emit
     return result
 
 
 def _send_trajectory(
-    pt, steps, session_id, version, trade_id, product, final_status
+    pt, steps, session_id, version, trade_id, product, final_status, outcome: str = "completed"
 ):
     """Submit the trajectory and a summary trace to PRISM."""
     with prismtrace.session(session_id):
@@ -241,6 +250,7 @@ def _send_trajectory(
                 "product": product,
                 "decision": decision,
                 "final_status": final_status,
+                "outcome": outcome,
                 "step_count": len(steps),
             },
         )

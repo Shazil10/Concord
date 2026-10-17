@@ -47,7 +47,7 @@ def main() -> None:
             expected_fault = expected.get("expected_fault", "?")
 
             try:
-                result = run_trade(tid, args.version)
+                result = run_trade(tid, args.version, emit=False)
                 actual_decision = result["decision"]
                 actual_fault = result.get("fault", "?")
 
@@ -55,6 +55,17 @@ def main() -> None:
                 # Don't check fault for clean Release trades
                 fault_match = (expected_fault == "none" and actual_decision == "Release") or \
                               actual_fault == expected_fault
+
+                # A Release on a trade that should be Held is the v1 stale-SSI bug.
+                # Tag it so PRISM can cluster those runs. The agent itself never
+                # reads the answer key; only this scorecard does.
+                emit = result.pop("_emit")
+                if expected_decision == "Hold" and actual_decision == "Release":
+                    emit("wrong_release", "error")
+                elif decision_match:
+                    emit("correct", "success")
+                else:
+                    emit("wrong_decision", "error")
 
                 if decision_match:
                     correct += 1
@@ -92,20 +103,29 @@ def main() -> None:
     print(f"  Score:   {correct}/{total} ({100*correct/max(total,1):.0f}%)")
     print(f"{'='*60}")
 
+    # One row per trade in the saved file, even when --repeat flooded PRISM.
+    by_id: dict[str, dict] = {}
+    for row in results:
+        by_id[row["trade_id"]] = row
+    saved = [by_id[tid] for tid in trade_ids if tid in by_id]
+    saved_correct = sum(1 for row in saved if row.get("decision") == scenarios.get(row["trade_id"], {}).get("expected_decision"))
+    saved_crashed = sum(1 for row in saved if row.get("decision") == "CRASH")
+    saved_wrong = len(saved) - saved_correct - saved_crashed
+
     # Write results JSON
     out_path = RESULTS_DIR / f"{args.version}.json"
     with open(out_path, "w") as f:
         json.dump({
             "version": args.version,
             "scorecard": {
-                "correct": correct,
-                "wrong": wrong,
-                "crashed": crashed,
-                "total": total,
+                "correct": saved_correct,
+                "wrong": saved_wrong,
+                "crashed": saved_crashed,
+                "total": len(saved),
             },
-            "trades": results,
+            "trades": saved,
         }, f, indent=2, default=str)
-    print(f"\nResults written to {out_path}")
+    print(f"\nResults written to {out_path} ({len(saved)} trades)")
 
     # Flush PRISM
     pt = get_client()
