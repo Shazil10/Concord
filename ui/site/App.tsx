@@ -65,18 +65,13 @@ const RECEIPTS = [
 /** One trade, before and after the fix. "same inputs" is the PRISM rubric phrase: keep it verbatim. */
 const PRISM_CASES: { title: string; trade: ReactNode; steps: string; output: ReactNode; result: ReactNode }[] = [
   {
-    title: "v1 — before",
-    trade: <>T019 · Quill Asset Management · <N>USD 1.635M</N></>,
-    steps: "3 of 12",
-    output: <span className="case-empty">(empty)</span>,
-    result: <Pill tone="red">Crashed · missing confirmation</Pill>,
+    title: "v1 — before", trade: <>T019 · Quill Asset Management · <N>USD 1.635M</N></>, steps: "3 of 12",
+    output: <span className="case-empty">(empty)</span>, result: <Pill tone="red">Crashed · missing confirmation</Pill>,
   },
   {
-    title: "v2 — after",
-    trade: <>T019 · <span className="em">same inputs</span></>,
-    steps: "12 of 12",
+    title: "v2 — after", trade: <>T019 · <span className="em">same inputs</span></>, steps: "12 of 12",
     output: <q className="case-quote">Hold — Quill Asset Management has not sent its confirmation. Chase before value date.</q>,
-    result: <Pill tone="amber">Hold · caller: us</Pill>,
+    result: <Pill tone="amber">Hold · fault: Quill</Pill>,
   },
 ];
 
@@ -378,8 +373,8 @@ function DecisionCard({ step }: { step: number }) {
       <p key={hold ? "hold" : "wait"} className={`verdict ${hold ? "is-set fade-in" : ""}`}>{hold ? "Hold" : "—"}</p>
       <dl className="decision-rows">
         <DecisionRow label="Fault" ready={step >= AT.fault}>
-          Birch Capital
-          <span className="decision-sub">Changed the account and didn’t resend.</span>
+          Us, Northline Treasury
+          <span className="decision-sub">Birch Capital sent the new account on 1 Oct. Our confirmation was never updated.</span>
         </DecisionRow>
         <DecisionRow label="Action" ready={step >= AT.action}>Call Birch settlements, today</DecisionRow>
         <DecisionRow label="Est. cost if it fails" ready={step >= AT.cost}><N>EUR 5,129</N></DecisionRow>
@@ -520,19 +515,14 @@ export default function Concord() {
   useGoogleFonts();
   const reduced = usePrefersReducedMotion();
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
-  const setters = useMemo(
-    () => SECTION_IDS.map((_, i) => (el: HTMLElement | null) => { sectionRefs.current[i] = el; }),
-    []
-  );
+  const setters = useMemo(() => SECTION_IDS.map((_, i) => (el: HTMLElement | null) => { sectionRefs.current[i] = el; }), []);
   const active = useActiveSection(sectionRefs);
 
-  const goTo = useCallback(
-    (index: number) => {
-      sectionRefs.current[index]?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
-      document.getElementById(titleId(index))?.focus({ preventScroll: true });
-    },
-    [reduced]
-  );
+  /** Scrolls a section to the top and moves focus to its heading, so keyboard and screen reader users land with it. */
+  const goTo = useCallback((index: number) => {
+    sectionRefs.current[index]?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+    document.getElementById(titleId(index))?.focus({ preventScroll: true });
+  }, [reduced]);
   const startStory = useCallback(() => goTo(1), [goTo]);
   useSectionKeys(sectionRefs, goTo);
 
@@ -720,15 +710,12 @@ body { display: block; min-width: 0; place-items: normal; } #root { width: 100%;
 .prism { max-width: var(--narrow); margin-top: 28px; padding: 18px 24px 6px; border: 1px solid var(--on-dark-line); border-radius: 6px; background: rgba(255, 255, 255, 0.03); }
 .prism-eyebrow { font-size: 13px; font-weight: 500; color: var(--on-dark-accent); }
 .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 12px; }
-.case { padding: 0 24px 12px 0; }
-.case + .case { padding: 0 0 12px 24px; border-left: 1px solid var(--on-dark-line); }
+.case { padding: 0 24px 12px 0; } .case + .case { padding: 0 0 12px 24px; border-left: 1px solid var(--on-dark-line); }
 .case-title { font-size: 14px; font-weight: 600; color: var(--on-dark); }
 .case-rows { margin-top: 8px; }
 .case-rows > div { display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: 12px; padding: 7px 0; border-top: 1px solid var(--on-dark-line); font-size: 14px; line-height: 1.5; }
-.case-rows dt { color: var(--on-dark-muted); }
-.case-rows dd { color: var(--on-dark); }
-.case-empty { font-style: italic; color: var(--on-dark-faint); }
-.case-quote { font-family: var(--serif); font-style: italic; font-size: 15px; }
+.case-rows dt { color: var(--on-dark-muted); } .case-rows dd { color: var(--on-dark); }
+.case-empty { font-style: italic; color: var(--on-dark-faint); } .case-quote { font-family: var(--serif); font-style: italic; font-size: 15px; }
 .tone-dark .receipts-caption { max-width: var(--narrow); margin-top: 14px; color: var(--on-dark-muted); }
 
 /* Footer */
@@ -737,29 +724,23 @@ body { display: block; min-width: 0; place-items: normal; } #root { width: 100%;
 /* Responsive */
 @media (max-width: 900px) {
   .split, .run { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .split-spacer { display: none; }
-  .run-side { position: static; }
+  .split-spacer { display: none; } .run-side { position: static; }
 }
 @media (max-width: 760px) {
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .fact:nth-child(3) { padding-left: 0; border-left: 0; }
-  .fact:nth-child(n + 3) { border-top: 1px solid var(--line); }
-  .cases { grid-template-columns: minmax(0, 1fr); }
-  .case { padding-right: 0; }
+  .fact:nth-child(3) { padding-left: 0; border-left: 0; } .fact:nth-child(n + 3) { border-top: 1px solid var(--line); }
+  .cases { grid-template-columns: minmax(0, 1fr); } .case { padding-right: 0; }
   .case + .case { padding: 16px 0 12px; border-left: 0; border-top: 1px solid var(--on-dark-line); }
 }
 @media (max-width: 559px) {
   .masthead { display: none; }
-  .section { padding: 64px 0; }
-  .wrap { padding: 0 20px; }
-  .lede { font-size: 17px; }
+  .section { padding: 64px 0; } .wrap { padding: 0 20px; } .lede { font-size: 17px; }
   .facts { grid-template-columns: minmax(0, 1fr); margin-top: 40px; }
   .fact, .fact:first-child, .fact:nth-child(3) { padding: 14px 0; border-left: 0; }
   .fact + .fact { border-left: 0; border-top: 1px solid var(--line); }
   .timeline { height: auto; margin: 44px 0 28px; }
   .tl-track { top: 10px; bottom: 31px; left: 6px; right: auto; width: 2px; height: auto; }
-  .tl-fill { transform: scaleY(0); }
-  .tl-risk { display: none; }
+  .tl-fill { transform: scaleY(0); } .tl-risk { display: none; }
   .tl-points { display: grid; gap: 28px; }
   .tl-point, .tl-start, .tl-end { position: static; display: grid; grid-template-columns: 14px minmax(0, 1fr); column-gap: 16px; align-items: start; width: auto; text-align: left; transform: none; }
   .tl-dot { grid-column: 1; grid-row: 1 / span 2; margin-top: 3px; }
@@ -769,17 +750,14 @@ body { display: block; min-width: 0; place-items: normal; } #root { width: 100%;
   .run-row { grid-template-columns: 26px minmax(0, 1fr) auto; padding-right: 6px; }
   .decision { padding: 20px; }
   .decision-rows > div, .case-rows > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-  .letter-label { flex: 1 0 100%; }
-  .letter-foot .btn { flex: 1; }
-  .receipts { font-size: 14px; }
-  .prism { padding: 18px 18px 6px; }
+  .letter-label { flex: 1 0 100%; } .letter-foot .btn { flex: 1; }
+  .receipts { font-size: 14px; } .prism { padding: 18px 18px 6px; }
 }
 
 /* Reduced motion: no transitions, final states immediately. */
 @media (prefers-reduced-motion: reduce) {
   .concord *, .concord *::before, .concord *::after { animation: none !important; transition: none !important; }
   .reveal > *, .tl-point > * { opacity: 1 !important; transform: none !important; }
-  .tl-fill { transform: none !important; }
-  .tl-risk { opacity: 1 !important; }
+  .tl-fill { transform: none !important; } .tl-risk { opacity: 1 !important; }
 }
 `;
