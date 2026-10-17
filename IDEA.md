@@ -4,7 +4,7 @@
 
 > Nothing gets paid until every party agrees.
 
-Concord checks every trade against every party's version of it, and against the latest settlement instructions, before money moves. It says **Release**, **Hold**, or **Escalate**, explains why, and drafts the follow-up message. A human reads a one-page summary and clicks approve.
+Concord checks every trade against every party's version of it, and against the latest settlement instructions, before money moves. It says **Release** or **Hold**, says whether to call (settles today) or email, explains why, and drafts the follow-up message. A human reads a one-page summary and clicks approve.
 
 Judging checklist lives in [MONEY_OPERATIONS.md](./MONEY_OPERATIONS.md). Who does what lives in [TASK_SPLIT.md](./TASK_SPLIT.md).
 
@@ -48,7 +48,7 @@ Shared SSI databases already exist, and the industry is buying confirmation-matc
 - Any product with the same shape: **FX** and **bonds** in the demo, to prove it is generic.
 - One generic trade model. No product-specific special cases.
 - A mock **SSI registry** with versions and effective dates, standing in for a shared, real-time instruction layer.
-- Release / Hold / Escalate, with reasons, fault assignment (us, counterparty, custodian), and a drafted email or amend request.
+- Release or Hold, with reasons, fault assignment (us or counterparty), call or email urgency, and a drafted message.
 - A human approval queue.
 
 ### Out of scope
@@ -62,7 +62,7 @@ Shared SSI databases already exist, and the industry is buying confirmation-matc
 | Layer | Responsibility |
 |---|---|
 | **Plain code (tools)** | Every comparison: amounts, dates, rates, bank codes, accounts, side mapping. Deterministic and testable. |
-| **Model (via Nicrron)** | Read messy confirmations and emails, explain each break in plain English, decide whose fault it is, pick email vs urgent escalation, draft the message. |
+| **Model (via Nicrron)** | Read messy confirmations and emails, explain each break in plain English, draft the message. Fault and call-vs-email are decided in code. |
 | **Human** | Read the one-page summary, Approve or Hold. |
 | **PRISM** | Record every run, cluster failures, fire alerts, prove the fix. |
 
@@ -85,7 +85,7 @@ load_trade
   → cross_match_sides            (our pay ↔ their receive, our receive ↔ their pay)
   → compare_economics            (amounts, rate/price, currency, dates)
   → estimate_fail_cost           (penalty + interest if it fails)
-  → decide                       (Release / Hold / Escalate + fault)
+  → decide                       (Release / Hold + fault + call or email)
   → draft_message                (email or amend request)
   → human approval               (Ninoo UI → simulated outbox)
 ```
@@ -94,7 +94,7 @@ That is 12 tool steps, well over the 6 required for the PRISM Sessions proof.
 
 ### Output per trade
 
-- **Decision:** Release / Hold / Escalate
+- **Decision:** Release / Hold, with urgency call (settles today) or email
 - **Breaks:** each field that failed, with the value from each source
 - **Fault:** us / counterparty / custodian / unknown
 - **Urgency:** settles today? penalty exposure?

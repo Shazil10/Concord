@@ -38,7 +38,7 @@ Vlad works on the `vlad` branch, Shazil on `shazil`. PRs into `main`; Shazil mer
 ### Demo UI (Ninoo Builder)
 
 - Build in Ninoo Builder at `app.ninoo.ai`:
-  - **Queue:** all trades with status Release / Hold / Escalate.
+  - **Queue:** all trades with status Release / Hold.
   - **Trade view:** one-page summary, table of breaks (field, our value, their value, registry value), fault, urgency.
   - **Draft message** panel.
   - **Approve / Hold** buttons → **Outbox** list (simulated, nothing sent).
