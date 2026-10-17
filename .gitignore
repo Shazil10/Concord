@@ -3,6 +3,9 @@
 .env.*
 !.env.example
 
+# Internal World Bank procedures — never commit
+Trade Reconciliation Procedures/
+
 # Python
 __pycache__/
 *.py[cod]
