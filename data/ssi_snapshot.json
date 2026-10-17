@@ -1,6 +1,6 @@
 {
   "as_of": "2026-08-01",
-  "description": "Fictional standing settlement instructions. The snapshot is the stale cache v1 reads. The registry is current.",
+  "description": "Fictional standing settlement instructions.",
   "parties": [
     {
       "party": "Northline Treasury",
@@ -270,7 +270,7 @@
           "branch": "New York",
           "country": "United States",
           "account": "90051000",
-          "account_name": "Birch Capital USD old"
+          "account_name": "Birch Capital USD"
         }
       ]
     },
@@ -287,7 +287,7 @@
           "branch": "Frankfurt",
           "country": "Germany",
           "account": "90052000",
-          "account_name": "Birch Capital EUR old"
+          "account_name": "Birch Capital EUR"
         }
       ]
     },
@@ -304,7 +304,7 @@
           "branch": "London",
           "country": "United Kingdom",
           "account": "90061000",
-          "account_name": "Holm Securities USD old"
+          "account_name": "Holm Securities USD"
         }
       ]
     },

@@ -2,7 +2,7 @@
 
 Build this at [app.ninoo.ai](https://app.ninoo.ai) with the same Nicrron login. Publish it and paste the `*.ninoo.app` link into the README when it is live.
 
-Shazil's per-trade JSON will replace the sample queue later. Until then, paste the prompt below. The statuses match `data/scenarios.csv` and `ui/sample_queue.json`.
+The real trade data is in `ui/sample_queue.json` (20 trades with decisions, breaks, draft messages). Paste the prompt below into Ninoo Builder.
 
 ## Prompt
 

@@ -2,10 +2,9 @@ COUNTERPARTY CONFIRMATION
 From: Kite Rowan Securities
 Re: T017
 Trade date 2026-10-15 value 2026-10-19
-We confirm the following, copied from your recap:
-We pay USD 1,090,000.
-We receive the other side into our own book.
-Please pay us at the account below, which is your receive account, not ours.
+We confirm the following:
+We buy EUR 1,000,000.
+We sell USD 1,090,000 at 1.0900.
 Pay to bank code: QUAYDEFF
 Pay to bank: Quay and Company
 Pay to branch: Frankfurt

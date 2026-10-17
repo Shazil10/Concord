@@ -1,0 +1,567 @@
+{
+  "version": "v1",
+  "scorecard": {
+    "correct": 14,
+    "wrong": 4,
+    "crashed": 2,
+    "total": 20
+  },
+  "trades": [
+    {
+      "trade_id": "T001",
+      "product": "FX",
+      "counterparty": "Lumen Markets",
+      "settle_date": "2026-10-17",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5746.58,
+        "currency": "USD",
+        "days_late": 1,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 1400,
+        "output": 1153
+      },
+      "session_id": "v1-T001-3187221c"
+    },
+    {
+      "trade_id": "T002",
+      "product": "FX",
+      "counterparty": "Kite Rowan Securities",
+      "settle_date": "2026-10-21",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5347.95,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 1414,
+        "output": 990
+      },
+      "session_id": "v1-T002-03a830c4"
+    },
+    {
+      "trade_id": "T003",
+      "product": "BOND",
+      "counterparty": "Sable Fund Services",
+      "settle_date": "2026-10-19",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 6349.32,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 666,
+        "output": 709
+      },
+      "session_id": "v1-T003-77bf51be"
+    },
+    {
+      "trade_id": "T004",
+      "product": "FX",
+      "counterparty": "Veldt Capital",
+      "settle_date": "2026-10-20",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5684.93,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 649,
+        "output": 668
+      },
+      "session_id": "v1-T004-7bd65e92"
+    },
+    {
+      "trade_id": "T005",
+      "product": "BOND",
+      "counterparty": "Quill Asset Management",
+      "settle_date": "2026-10-21",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5554.79,
+        "currency": "EUR",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 1343,
+        "output": 985
+      },
+      "session_id": "v1-T005-dcd27d1c"
+    },
+    {
+      "trade_id": "T006",
+      "product": "FX",
+      "counterparty": "Marlow Brothers",
+      "settle_date": "2026-10-19",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5378.08,
+        "currency": "EUR",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 1417,
+        "output": 966
+      },
+      "session_id": "v1-T006-e8c5cd48"
+    },
+    {
+      "trade_id": "T007",
+      "product": "FX",
+      "counterparty": "Birch Capital",
+      "settle_date": "2026-10-19",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5179.18,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 1396,
+        "output": 947
+      },
+      "session_id": "v1-T007-a5804189"
+    },
+    {
+      "trade_id": "T008",
+      "product": "FX",
+      "counterparty": "Birch Capital",
+      "settle_date": "2026-10-17",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5128.77,
+        "currency": "EUR",
+        "days_late": 1,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 1404,
+        "output": 1073
+      },
+      "session_id": "v1-T008-02ca33d1"
+    },
+    {
+      "trade_id": "T009",
+      "product": "BOND",
+      "counterparty": "Holm Securities",
+      "settle_date": "2026-10-21",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5813.7,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 1420,
+        "output": 1044
+      },
+      "session_id": "v1-T009-b827f52c"
+    },
+    {
+      "trade_id": "T010",
+      "product": "FX",
+      "counterparty": "Holm Securities",
+      "settle_date": "2026-10-20",
+      "version": "v1",
+      "decision": "Release",
+      "reason": "All checks passed",
+      "fault": "none",
+      "urgency": "none",
+      "breaks": [],
+      "draft_message": "Matched. Ready to release.",
+      "summary": "All checks passed",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5373.29,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 646,
+        "output": 503
+      },
+      "session_id": "v1-T010-74f8abb6"
+    },
+    {
+      "trade_id": "T011",
+      "product": "FX",
+      "counterparty": "Orion Desk",
+      "settle_date": "2026-10-19",
+      "version": "v1",
+      "decision": "Hold",
+      "reason": "1 break(s) found",
+      "fault": "unknown",
+      "urgency": "email",
+      "breaks": [
+        {
+          "field": "pay_bank_code",
+          "issue": "Our pay bank code not found in counterparty confirmation",
+          "our_pay_bank": "FNBKUSNY",
+          "cpty_bank_codes": [
+            "FNBKKRSE"
+          ]
+        }
+      ],
+      "draft_message": "Subject: T011 \u2013 FX EUR/USD \u2013 Pay bank code discrepancy \u2013 Amended confirmation requested\n\nHi Orion Desk team,\n\nWe have a break on the confirmation for trade T011 (Northline Treasury BUY EUR 900,000 / SELL USD 981,000 at 1.0900, trade date 15-Oct-2026, settle date 19-Oct-2026, settlement location New York).\n\nField: Pay bank code (USD leg)\nOur value: FNBKUSNY\nYour value: FNBKKRSE\nRegistry value: Not available for this field\n\nOur pay bank code is consistent with New York settlement; the code on your confirmation does not appear to match the settlement location. Could you please check the SSI on your side and send an amended confirmation reflecting the correct pay bank code before the 19-Oct-2026 value date? If you believe FNBKKRSE is correct, please let us know so we can investigate on our end.\n\nMany thanks,\nNorthline Treasury \u2013 Settlement Operations",
+      "summary": "1 break(s) found",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5134.38,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 2651,
+        "output": 2017
+      },
+      "session_id": "v1-T011-4b2d4c31"
+    },
+    {
+      "trade_id": "T012",
+      "product": "BOND",
+      "counterparty": "Pebble Street Capital",
+      "settle_date": "2026-10-17",
+      "version": "v1",
+      "decision": "Hold",
+      "reason": "1 break(s) found",
+      "fault": "unknown",
+      "urgency": "call",
+      "breaks": [
+        {
+          "field": "pay_bank_code",
+          "issue": "Our pay bank code not found in counterparty confirmation",
+          "our_pay_bank": "PINESGSG",
+          "cpty_bank_codes": [
+            "PINEUSCH"
+          ]
+        }
+      ],
+      "draft_message": "Calling regarding trade T012, BUY of PBBL 5.00 15JAN2030, quantity 2,500,000 at 100.00, settling 2026-10-17 in Singapore. Cash amount is USD 2,500,000. The pay bank code on your confirmation shows PINEUSCH; our confirmation shows PINESGSG. We cannot confirm the correct SSI from a registry at this time. Please do not release the USD 2,500,000 until we have verified the pay bank code with you and received an amended confirmation if required.",
+      "summary": "1 break(s) found",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5342.47,
+        "currency": "USD",
+        "days_late": 1,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 2738,
+        "output": 1904
+      },
+      "session_id": "v1-T012-9319d5ce"
+    },
+    {
+      "trade_id": "T013",
+      "product": "FX",
+      "counterparty": "Cedar Point Markets",
+      "settle_date": "2026-10-22",
+      "version": "v1",
+      "decision": "Hold",
+      "reason": "1 break(s) found",
+      "fault": "unknown",
+      "urgency": "email",
+      "breaks": [
+        {
+          "field": "pay_bank_code",
+          "issue": "Our pay bank code not found in counterparty confirmation",
+          "our_pay_bank": "PINESGSG",
+          "cpty_bank_codes": [
+            "PINEUSCH"
+          ]
+        }
+      ],
+      "draft_message": "Subject: T013 \u2013 FX USD/JPY \u2013 Pay bank code discrepancy \u2013 Value 22 Oct 2026\n\nDear Cedar Point Markets Settlements,\n\nWe have identified a break on our FX trade T013 (trade date 16 Oct 2026, Northline Treasury buys JPY 300,000,000 / sells USD 2,000,000 at 150.00, value 22 Oct 2026, settling Singapore).\n\nField: pay_bank_code\nOur value: PINESGSG\nYour value: PINEUSCH\nRegistry value: not available (no SSI record supplied for this trade)\n\nOur instruction references the Singapore branch, consistent with the agreed settlement location. Could you please check the pay bank code against your SSI records and confirm which instruction should apply? If PINEUSCH is not your intended instruction, please send an amended confirmation before value date so we can match and release.\n\nMany thanks,\nNorthline Treasury \u2013 Settlement Operations",
+      "summary": "1 break(s) found",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5273.97,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 2750,
+        "output": 2197
+      },
+      "session_id": "v1-T013-092f0716"
+    },
+    {
+      "trade_id": "T014",
+      "product": "FX",
+      "counterparty": "Pebble Street Capital",
+      "settle_date": "2026-10-19",
+      "version": "v1",
+      "decision": "Hold",
+      "reason": "1 break(s) found",
+      "fault": "unknown",
+      "urgency": "email",
+      "breaks": [
+        {
+          "field": "pay_account",
+          "issue": "Our pay account not found in counterparty confirmation",
+          "our_pay": "90071001",
+          "cpty_accounts": [
+            "90071002"
+          ]
+        }
+      ],
+      "draft_message": "Subject: T014 \u2013 Pay account break, EUR/USD value 19 Oct 2026\n\nHi Pebble Street Capital team,\n\nWe have one break on our confirmation match for trade T014 (Northline Treasury buys EUR 700,000 / sells USD 763,000 at 1.0900, trade date 15 Oct 2026, value date 19 Oct 2026, settling in Singapore).\n\nField: pay_account\nOur value: 90071001\nYour value: 90071002\nRegistry value: not yet available \u2013 we are checking the SSI registry on our side and would ask you to do the same.\n\nOur pay account 90071001 does not appear on your confirmation. Could you please verify the account against your standing instructions for Northline Treasury and either confirm 90071001 or let us know the basis for 90071002? Once agreed, please send an amended confirmation before the 19 Oct value date so we can match and release on time.\n\nHappy to jump on a call if that is easier.\n\nThanks,\nNorthline Treasury Settlement Operations",
+      "summary": "1 break(s) found",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5104.52,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 2619,
+        "output": 1997
+      },
+      "session_id": "v1-T014-cfcb1018"
+    },
+    {
+      "trade_id": "T015",
+      "product": "BOND",
+      "counterparty": "Pebble Street Capital",
+      "settle_date": "2026-10-21",
+      "version": "v1",
+      "decision": "Hold",
+      "reason": "1 break(s) found",
+      "fault": "unknown",
+      "urgency": "email",
+      "breaks": [
+        {
+          "field": "pay_account",
+          "issue": "Our pay account not found in counterparty confirmation",
+          "our_pay": "90071002",
+          "cpty_accounts": [
+            "90071001"
+          ]
+        }
+      ],
+      "draft_message": "Subject: T015 \u2013 PBBL 4.00 01NOV2030 \u2013 Pay Account Discrepancy \u2013 VD 21-Oct-2026\n\nHi Pebble Street Capital Settlements team,\n\nWe have one break on the confirmation for the below trade and would appreciate your help resolving it ahead of value date.\n\nTrade: T015\nProduct: Bond\nSecurity: PBBL 4.00 01NOV2030\nNorthline Treasury BUYS 8,000,000 face at 97.25\nSettlement amount: USD 7,780,000\nTrade date: 14-Oct-2026\nSettle date: 21-Oct-2026\nSettlement location: Singapore\n\nField in question: Pay account\n- Our confirmation: 90071002\n- Your confirmation: 90071001\n- Registry / SSI value: not available on our side at the time of writing; we are checking our SSI records in parallel.\n\nGiven the single-digit difference, this looks like it may be a keying error on one side. Could you please check the account against your SSI records for this trade and confirm which account is correct? If 90071002 is the valid account, please send an amended confirmation reflecting it before value date on 21-Oct-2026. If your records show 90071001, please let us know and we will review our instruction accordingly.\n\nWe will hold settlement instructions until the account is agreed.\n\nMany thanks,\nNorthline Treasury \u2013 Settlement Operations",
+      "summary": "1 break(s) found",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 6065.75,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 2003,
+        "output": 1647
+      },
+      "session_id": "v1-T015-0b2148ce"
+    },
+    {
+      "trade_id": "T016",
+      "product": "FX",
+      "counterparty": "Lumen Markets",
+      "settle_date": "2026-10-20",
+      "version": "v1",
+      "decision": "Hold",
+      "reason": "1 break(s) found",
+      "fault": "unknown",
+      "urgency": "email",
+      "breaks": [
+        {
+          "field": "pay_account",
+          "issue": "Our pay account not found in counterparty confirmation",
+          "our_pay": "90011099",
+          "cpty_accounts": [
+            "90011001"
+          ]
+        }
+      ],
+      "draft_message": "Subject: T016 \u2013 FX EUR/USD \u2013 Pay account discrepancy, settle 2026-10-20\n\nHi Lumen Markets team,\n\nOn trade T016 (Northline Treasury BUY EUR 1,500,000 vs USD 1,635,000 at 1.0900, trade date 2026-10-16, settlement 2026-10-20, New York), we have a break on the pay account field.\n\n- Field: pay_account\n- Our value: 90011099\n- Your value: 90011001\n- Registry value: not available \u2013 no SSI registry entry was provided for this account\n\nThe two accounts differ only in the final digits, so this may be a keying error on either side. Could you please check the account against your records and the SSI registry and send an amended confirmation (or confirm your figure) before the 2026-10-20 value date so we can match and release?\n\nThanks,\nNorthline Treasury Settlements",
+      "summary": "1 break(s) found",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5223.97,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 2676,
+        "output": 1732
+      },
+      "session_id": "v1-T016-2be9e6ee"
+    },
+    {
+      "trade_id": "T017",
+      "product": "FX",
+      "counterparty": "Kite Rowan Securities",
+      "settle_date": "2026-10-19",
+      "version": "v1",
+      "decision": "Hold",
+      "reason": "1 break(s) found",
+      "fault": "counterparty",
+      "urgency": "email",
+      "breaks": [
+        {
+          "field": "swapped_sides",
+          "issue": "Counterparty confirmation has pay and receive swapped \u2014 their 'Pay to' is our receive account and their 'Receive at' is our pay account",
+          "our_pay": "90021001",
+          "our_receive": "90020001",
+          "cpty_pay": "90020001",
+          "cpty_receive": "90021001"
+        }
+      ],
+      "draft_message": "Subject: T017 \u2013 FX EUR/USD \u2013 Confirmation Mismatch \u2013 Value 19 Oct 2026\n\nDear Kite Rowan Securities Settlements,\n\nWe have a break on the confirmation for the following trade:\n\nTrade ID: T017\nProduct: FX spot\nTrade date: 15 Oct 2026\nValue date: 19 Oct 2026\nNorthline Treasury BUYS EUR 1,000,000 / SELLS USD 1,090,000 at 1.0900\nSettlement location: London\n\nField: Settlement accounts (pay / receive)\nOur confirmation: Pay account 90021001, Receive account 90020001\nYour confirmation: Pay account 90020001, Receive account 90021001\nSSI registry value: not included in the break record \u2013 we are verifying against the SSI registry in parallel and will share the result.\n\nThe pay and receive accounts on your confirmation appear to be reversed relative to ours. If your 'Pay to' / 'Receive at' are expressed from your side rather than ours, please confirm so we can close this as a presentation difference; otherwise please issue an amended confirmation with the corrected account directionality.\n\nGiven value date is 19 Oct, we would appreciate an amended confirmation (or confirmation of the above) before then so settlement can proceed on time.\n\nKind regards,\nSettlement Operations\nNorthline Treasury",
+      "summary": "1 break(s) found",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5149.32,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 2996,
+        "output": 2897
+      },
+      "session_id": "v1-T017-056986a6"
+    },
+    {
+      "trade_id": "T018",
+      "product": "BOND",
+      "counterparty": "Sable Fund Services",
+      "settle_date": "2026-10-21",
+      "version": "v1",
+      "decision": "Hold",
+      "reason": "1 break(s) found",
+      "fault": "unknown",
+      "urgency": "email",
+      "breaks": [
+        {
+          "field": "swapped_sides",
+          "issue": "Counterparty confirmation has pay and receive swapped \u2014 their 'Pay to' is our receive account and their 'Receive at' is our pay account",
+          "our_pay": "90031001",
+          "our_receive": "90010001",
+          "cpty_pay": "90010001",
+          "cpty_receive": "90031001"
+        }
+      ],
+      "draft_message": "Subject: T018 \u2013 SBLB 4.00 01NOV2030 \u2013 Settlement instruction mismatch, VD 21-Oct-2026\n\nDear Sable Fund Services team,\n\nWe are reviewing confirmations for trade T018 (Northline Treasury BUY 3,000,000 SBLB 4.00 01NOV2030 at 102.00, USD 3,060,000, settling Zurich, value date 21-Oct-2026) and have identified a break in the settlement instructions.\n\nField: Pay / Receive accounts\nOur confirmation: Pay account 90031001, Receive account 90010001\nYour confirmation: Pay account 90010001, Receive account 90031001\nRegistry value: not yet available \u2013 we are checking the standing settlement instructions on file and will share the result.\n\nThe two confirmations show the pay and receive accounts mirrored. Could you please check your records against your SSIs and let us know which direction is correct on your side? If your confirmation needs to be corrected, we would be grateful for an amended confirmation before the 21-Oct-2026 value date so that we can match and release in good time.\n\nMany thanks,\nNorthline Treasury \u2013 Settlement Operations",
+      "summary": "1 break(s) found",
+      "fail_cost": {
+        "ok": true,
+        "estimated_penalty": 5419.18,
+        "currency": "USD",
+        "days_late": 0,
+        "note": "Demo estimate only. Flat 5000 + 5% annual per day."
+      },
+      "total_tokens": {
+        "input": 3012,
+        "output": 2535
+      },
+      "session_id": "v1-T018-c25bec5a"
+    },
+    {
+      "trade_id": "T019",
+      "version": "v1",
+      "decision": "CRASH",
+      "reason": "FileNotFoundError: No counterparty confirmation for T019",
+      "breaks": [],
+      "fault": "error"
+    },
+    {
+      "trade_id": "T020",
+      "version": "v1",
+      "decision": "CRASH",
+      "reason": "FileNotFoundError: No counterparty confirmation for T020",
+      "breaks": [],
+      "fault": "error"
+    }
+  ]
+}

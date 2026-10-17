@@ -18,5 +18,4 @@ Receive at country: Germany
 Receive at account: 90020001
 Receive at account name: Northline Treasury EUR
 
-Economics agree with the front-office booking.
 Nothing in this message has been sent to a network.
