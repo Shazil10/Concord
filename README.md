@@ -3,7 +3,7 @@
 > **Money Talks 2 — AI × Finance Hackathon** | Money Operations track  
 > Built by Shazil Farukh & Vladislav Pak (World Bank Group Treasury)
 
-**Concord** checks every trade against every party's confirmation and the latest settlement instructions before money moves. It hands a human one decision: **Release**, **Hold**, or **Escalate**.
+**Concord** checks every trade against every party's confirmation and the latest settlement instructions before money moves. It hands a human one decision: **Release** or **Hold**. Every Hold says whose fault it is and whether to **call** (settles today) or **email**.
 
 ## Quick start
 
