@@ -56,6 +56,38 @@ Screen 3, Outbox. A list of notes sitting on this desk. Empty until Approve is c
 
 Keep every name and account fictional. Do not add a send button.
 
+## Story version (start a new app with this)
+
+Build a single-page walkthrough called "Concord" for a fictional settlements desk, Northline Treasury. It tells one story: an agent checks a payment, the first version gets it wrong, the second gets it right. A presenter clicks "Next" to move through five sections, or scrolls. No login, no marketing hero, no send button. Nothing leaves the page.
+
+Design. It should look like a calm, well-made institutional website, not an AI demo. White background. Navy text (#0B2545). One accent blue (#0071BC) for links and buttons. Very light blue (#EAF4FB) for panels. Green (#1E7B45) only for passed checks, red (#B42318) only for failures, amber (#B54708) only for warnings. Font: Inter or the system sans-serif, normal sentence case, no all-caps micro labels, no gradients, no glow, no glass, no emoji, no icons in circles. Generous white space, a max width of about 960px, thin grey (#D9E2EC) borders, 6px corners. Tables look like plain finance tables. A simple top bar: "Concord" on the left in navy, "Northline Treasury · fictional data" on the right in grey.
+
+Section 1, "The payment". Heading: "EUR 940,000 to Birch Capital, settling today." One sentence: "Before money moves, every party has to agree on where it goes." Three side-by-side cards, each with a small label and an account number:
+- Our confirmation: Quay and Company, Frankfurt. Account 90052000.
+- Their confirmation: Quay and Company, Frankfurt. Account 90052000.
+- Settlement instructions on file: Account 90052002, changed on 1 October. Underneath, in grey: "Birch Capital emailed this change on 1 October."
+A short line under the cards: "Both confirmations agree with each other. Only the instructions on file show the account changed."
+
+Section 2, "Concord v1". A vertical list of 12 checks that tick on one by one when this section appears (about 150 ms each): Load trade, Read our confirmation, Read their confirmation, Custodian status, Look up instructions, Bank and branch, Account vs instructions, Both sides agree, Amounts and dates, Fail cost, Decide, Draft note. All 12 turn green. Next to "Look up instructions" a small grey note: "read an old copy from August". Then a large result block with a green "Release" label, followed by a red outcome box: "EUR 940,000 would have gone to account 90052000, which Birch Capital closed on 1 October." Below, in grey: "The same bug released 4 trades worth USD 9.97M and EUR 0.94M. A second bug crashed v1 whenever a counterparty had not sent a confirmation."
+
+Section 3, "PRISM caught it". Two plain panels side by side.
+- Alert: "Failed traces in the last hour: 6. Threshold: 5. Fired." with a red dot.
+- Root cause: "52 failed runs grouped into one cause: the agent stopped at step 3 when a confirmation was missing." And: "Stale instructions: v1 read a snapshot instead of the live registry."
+One line under both: "Every run is traced step by step in PRISM by Block Convey."
+
+Section 4, "Concord v2, same payment". The same 12-check list ticks again. This time "Look up instructions" has the note "live registry, version 2 from 1 October", and "Account vs instructions" turns red with the text "Our confirmation says 90052000. The registry says 90052002." The rest are green. A large result block with an amber "Hold" label, then three facts in a row: "Fault: us", "Action: call, it settles today", "Est. cost if it fails: EUR 5,129". Then a draft note in a light blue panel: "Birch Capital, your euro account changed on 1 October to 90052002 at Quay and Company, Frankfurt. Our confirmation still pays 90052000. Please confirm before we release. This note was not sent." Two buttons: "Approve" (blue) and "Keep on hold" (outline). Approve replaces the buttons with "Approved. Added to the outbox. Not sent."
+
+Section 5, "Twenty trades, before and after". A simple two-column table:
+- Row "Right decision": v1 14 of 20, v2 20 of 20.
+- Row "Paid to a closed account": v1 4, v2 0.
+- Row "Crashed with no answer": v1 2, v2 0.
+- Row "Fault named correctly": v1 14 of 20, v2 20 of 20.
+Below: a link "See all 20 trades" that opens a plain table with columns Trade, Counterparty, Cash, Settles, Decision, Fault, Action, using this data:
+T001 Lumen Markets USD 5,450,000 2026-10-17 Release; T002 Kite Rowan Securities USD 2,540,000 2026-10-21 Release; T003 Sable Fund Services USD 9,850,000 2026-10-19 Release; T004 Veldt Capital USD 5,000,000 2026-10-20 Release; T005 Quill Asset Management EUR 4,050,000 2026-10-21 Release; T006 Marlow Brothers EUR 2,760,000 2026-10-19 Release; T007 Birch Capital USD 1,308,000 2026-10-19 Hold us Email; T008 Birch Capital EUR 940,000 2026-10-17 Hold us Call; T009 Holm Securities USD 5,940,000 2026-10-21 Hold us Email; T010 Holm Securities USD 2,725,000 2026-10-20 Hold us Email; T011 Orion Desk USD 981,000 2026-10-19 Hold counterparty Email; T012 Pebble Street Capital USD 2,500,000 2026-10-17 Hold counterparty Call; T013 Cedar Point Markets USD 2,000,000 2026-10-22 Hold counterparty Email; T014 Pebble Street Capital USD 763,000 2026-10-19 Hold counterparty Email; T015 Pebble Street Capital USD 7,780,000 2026-10-21 Hold us Email; T016 Lumen Markets USD 1,635,000 2026-10-20 Hold us Email; T017 Kite Rowan Securities USD 1,090,000 2026-10-19 Hold counterparty Email; T018 Sable Fund Services USD 3,060,000 2026-10-21 Hold counterparty Email; T019 Quill Asset Management EUR 1,500,000 2026-10-17 Hold counterparty Call; T020 Veldt Capital USD 5,025,000 2026-10-23 Hold counterparty Email.
+Exactly 20 rows, each once.
+
+Footer, small grey: "Concord · synthetic data · built with Nicrron and Ninoo · traced in PRISM".
+
 ## Follow-up prompt (paste after the first build)
 
 Keep everything that works. Add these four things.
