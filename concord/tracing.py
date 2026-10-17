@@ -64,20 +64,41 @@ def step(name: str, input_summary: str, fn: Callable[[], Any], is_llm: bool = Fa
 
 
 def _summarize(result: Any) -> str:
-    if isinstance(result, dict):
-        ok = result.get("ok")
-        decision = result.get("decision")
+    if not isinstance(result, dict):
+        return str(result)[:200]
+    if result.get("decision"):
+        return f"{result['decision']}: {result.get('reason', '')}"
+    if "parsed" in result:
+        p = result["parsed"]
+        if not p:
+            return "no counterparty confirmation on file"
+        return (f"parsed {p.get('trade_id', '?')}: pay {p.get('pay_bank_code') or '-'} "
+                f"{p.get('pay_account') or '-'}, receive {p.get('receive_bank_code') or '-'} "
+                f"{p.get('receive_account') or '-'}")
+    if "trade" in result:
+        t = result["trade"]
+        return (f"{t.get('product')} {t.get('counterparty')} settles {t.get('settle_date')}"
+                f"{', email on file' if result.get('email') else ''}")
+    if "custodian" in result:
+        c = result["custodian"] or {}
+        return ", ".join(f"{k}={v}" for k, v in c.items() if k != "trade_id")[:200]
+    if "instructions" in result:
+        ins = result["instructions"]
+        if not ins:
+            return "no registry entry"
+        return "; ".join(f"{i.get('purpose')}: {i.get('bank_code')} {i.get('account')} "
+                         f"(v{i.get('version')} from {i.get('effective_from')})" for i in ins)
+    if "resolved" in result:
+        r = result["resolved"]
+        return f"{r.get('institution', '')} {r.get('branch', '')}, {r.get('country', '')}" if r else result.get("error", "unknown")
+    if "estimated_penalty" in result:
+        return f"est. fail cost {result['estimated_penalty']:,.0f} {result.get('currency', '')}"
+    if "data" in result and isinstance(result["data"], dict) and "message" in result["data"]:
+        return f"to {result['data'].get('recipient', '?')}: {result['data']['message']}"
+    if "ok" in result:
         breaks = result.get("breaks", [])
-        if decision:
-            return f"{decision}: {result.get('reason', '')}"
-        if ok is not None:
-            n = len(breaks)
-            if n:
-                return f"ok={ok}, {n} break(s): {', '.join(b.get('field','?') for b in breaks[:3])}"
-            return f"ok={ok}"
-        if "parsed" in result:
-            p = result["parsed"]
-            if p:
-                return f"parsed: {p.get('trade_id', '?')} {p.get('counterparty', '?')}"
-            return "parsed: None (missing)"
+        if breaks:
+            return f"{len(breaks)} break(s): " + "; ".join(
+                f"{b.get('field', '?')} — {b.get('issue', '')}" for b in breaks[:3])
+        return result.get("note") or "match"
     return str(result)[:200]
