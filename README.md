@@ -5,6 +5,8 @@
 
 **Concord** checks every trade against every party's confirmation and the latest settlement instructions before money moves. It hands a human one decision: **Release** or **Hold**. Every Hold says whose fault it is and whether to **call** (settles today) or **email**.
 
+**Demo video (1 min):** [Watch on Loom](https://www.loom.com/share/de3117b0a92b4babbe6bed9ad292f5ae)
+
 **Demo site:** [empty-react-app-6c23.ninoo.app](https://empty-react-app-6c23.ninoo.app/), built on Ninoo Builder. The source is `ui/site/App.tsx`.
 
 ## Quick start
