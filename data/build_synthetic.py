@@ -530,6 +530,17 @@ def email_text(trade: dict) -> str:
     ])
 
 
+# Front office books which account a trade settles to when the counterparty
+# has several accounts under one bank code.
+SETTLEMENT_PURPOSE = {
+    "T001": "operating",
+    "T012": "growth",
+    "T014": "growth",
+    "T015": "growth",
+    "T016": "operating",
+}
+
+
 def cash_amount(trade: dict) -> tuple[str, str]:
     if trade["side"] == "SELL" and trade["ccy_bought"]:
         return trade["ccy_bought"], trade["amount_bought"]
@@ -577,14 +588,14 @@ def main() -> None:
     trade_fields = [
         "trade_id", "product", "trade_date", "settle_date", "our_entity", "counterparty", "side",
         "ccy_bought", "amount_bought", "ccy_sold", "amount_sold", "rate_or_price", "security_id",
-        "quantity", "settlement_location",
+        "quantity", "settlement_location", "settlement_purpose",
     ]
     trade_rows = []
     scenario_rows = []
     custodian_rows = []
     queue = []
     for trade in TRADES:
-        trade_rows.append({"our_entity": OUR, **trade})
+        trade_rows.append({"our_entity": OUR, "settlement_purpose": SETTLEMENT_PURPOSE.get(trade["trade_id"], ""), **trade})
         scenario_rows.append({
             "trade_id": trade["trade_id"],
             "product": trade["product"],

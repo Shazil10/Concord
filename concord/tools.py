@@ -315,13 +315,71 @@ def estimate_fail_cost(trade: dict, demo_date: str) -> dict:
 
 # ── 11. decide ───────────────────────────────────────────────────────
 
-def decide(all_breaks: list[dict], missing_cpty: bool) -> dict:
+def decide(all_breaks: list[dict], missing_cpty: bool, fault: str = "none", urgency: str = "none") -> dict:
     """Release only when every check is clean. Otherwise Hold."""
     if missing_cpty:
-        return {"decision": "Hold", "reason": "Missing counterparty confirmation — chase required"}
+        return {"decision": "Hold", "reason": "Missing counterparty confirmation — chase required",
+                "fault": fault, "urgency": urgency}
     if all_breaks:
-        return {"decision": "Hold", "reason": f"{len(all_breaks)} break(s) found"}
-    return {"decision": "Release", "reason": "All checks passed"}
+        return {"decision": "Hold", "reason": f"{len(all_breaks)} break(s) found — fault {fault}, {urgency}",
+                "fault": fault, "urgency": urgency}
+    return {"decision": "Release", "reason": "All checks passed", "fault": "none", "urgency": "none"}
+
+
+def assign_fault(
+    our_parsed: dict,
+    cpty_parsed: dict | None,
+    registry_instructions: list[dict],
+    all_breaks: list[dict],
+    missing_cpty: bool,
+    purpose: str | None = None,
+) -> str:
+    """Whose confirmation disagrees with the registry. Both wrong means our
+    registry copy was never updated, which is ours to fix."""
+    if missing_cpty:
+        return "counterparty"
+    if not all_breaks:
+        return "none"
+    if any(b.get("field") == "swapped_sides" for b in all_breaks):
+        return "counterparty"
+
+    expected = _expected_instruction(registry_instructions, purpose)
+    if expected is None:
+        return "unknown"
+
+    def matches(acct: str, code: str) -> bool | None:
+        if not acct and not code:
+            return None
+        return (_norm(acct) == _norm(expected.get("account", ""))
+                and _norm(code) == _norm(expected.get("bank_code", "")))
+
+    ours = matches(our_parsed.get("pay_account") or "", our_parsed.get("pay_bank_code") or "")
+    theirs = None
+    if cpty_parsed:
+        theirs = matches(cpty_parsed.get("pay_account") or "", cpty_parsed.get("pay_bank_code") or "")
+
+    if ours is False:
+        return "us"
+    if theirs is False:
+        return "counterparty"
+    return "unknown"
+
+
+def _expected_instruction(registry_instructions: list[dict], purpose: str | None) -> dict | None:
+    if purpose:
+        for instr in registry_instructions:
+            if instr.get("purpose") == purpose:
+                return instr
+    if len(registry_instructions) == 1:
+        return registry_instructions[0]
+    return None
+
+
+def urgency_for(settle_date: str, demo_date: str, has_issue: bool) -> str:
+    """Call when the trade settles today or earlier; email otherwise."""
+    if not has_issue:
+        return "none"
+    return "call" if settle_date <= demo_date else "email"
 
 
 # ── 12. draft_message ────────────────────────────────────────────────

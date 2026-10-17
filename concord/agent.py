@@ -45,6 +45,7 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
         counterparty = trade.get("counterparty", "")
         product = trade.get("product", "")
         settle_date = trade.get("settle_date", "")
+        purpose = trade.get("settlement_purpose") or None
 
         # ── Step 2: parse_our_confirmation (LLM) ────────────────────
         s2 = step("parse_our_confirmation", f"trade_id={trade_id}",
@@ -65,6 +66,12 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
         elif s3["result"] and s3["result"].get("missing"):
             missing_cpty = True
             cpty_parsed = None
+            all_breaks.append({
+                "field": "counterparty_confirmation",
+                "our_value": "confirmation sent",
+                "their_value": "none received",
+                "issue": f"No confirmation received from {counterparty}; chase before value date",
+            })
         else:
             _track_tokens(s3["result"])
             cpty_parsed = s3["result"]["parsed"] if s3["result"] else None
@@ -107,6 +114,7 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
                            our_pay_acct,
                            our_pay_code,
                            registry_instructions,
+                           purpose_hint=purpose,
                        ))
         steps.append(s7["step"])
         if s7["result"] and not s7["result"]["ok"]:
@@ -136,8 +144,11 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
         steps.append(s10["step"])
 
         # ── Step 11: decide ──────────────────────────────────────────
+        fault = tools.assign_fault(our_parsed, cpty_parsed, registry_instructions,
+                                   all_breaks, missing_cpty, purpose)
+        urgency = tools.urgency_for(settle_date, DEMO_DATE, bool(all_breaks) or missing_cpty)
         s11 = step("decide", f"{len(all_breaks)} breaks, missing_cpty={missing_cpty}",
-                    lambda: tools.decide(all_breaks, missing_cpty))
+                    lambda: tools.decide(all_breaks, missing_cpty, fault, urgency))
         steps.append(s11["step"])
         decision_result = s11["result"] if s11["result"] else {"decision": "Hold", "reason": "Error"}
         decision = decision_result["decision"]
@@ -148,12 +159,9 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
                        lambda: {"data": {"message": "Matched. Ready to release.", "recipient": "internal"},
                                 "tokens": {"input": 0, "output": 0}})
         else:
-            explanation_result = llm.explain_breaks(trade, all_breaks, email_text)
+            explanation_result = llm.explain_breaks(trade, all_breaks, email_text, fault)
             _track_tokens(explanation_result)
-            expl = explanation_result["data"]
-            fault = expl.get("fault", "unknown")
-            urgency = expl.get("urgency", "email")
-            explanation_text = expl.get("explanation", "")
+            explanation_text = explanation_result["data"].get("explanation", "")
 
             def _do_draft():
                 return llm.draft_message(trade, all_breaks, fault, urgency, explanation_text)
@@ -163,13 +171,6 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
         steps.append(s12["step"])
         draft_data = s12["result"]["data"] if s12["result"] else {"message": "", "recipient": ""}
 
-    # Build final result
-    outcome = "correct" if decision else "error"
-    if decision == "Release" and all_breaks:
-        outcome = "wrong_release"
-
-    # For stale_ssi trades in v1, check if we wrongly released
-    # (v1 won't see the breaks because it reads the old snapshot)
     final_status = "success" if not error_out else "error"
 
     result = {
@@ -180,8 +181,9 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
         "version": version,
         "decision": decision,
         "reason": decision_result.get("reason", ""),
-        "fault": draft_data.get("recipient", "") if decision == "Hold" else "none",
-        "urgency": "none",
+        "fault": decision_result.get("fault", fault),
+        "urgency": decision_result.get("urgency", urgency),
+        "recipient": counterparty if decision == "Hold" else "internal",
         "breaks": all_breaks,
         "draft_message": draft_data.get("message", ""),
         "summary": decision_result.get("reason", ""),
@@ -189,19 +191,6 @@ def run_trade(trade_id: str, version: str, emit: bool = True) -> dict:
         "total_tokens": total_tokens,
         "session_id": session_id,
     }
-
-    # Extract fault and urgency from LLM explanation if we had breaks
-    if decision != "Release" and not missing_cpty and s12["result"]:
-        try:
-            result["fault"] = expl.get("fault", "unknown")
-            result["urgency"] = expl.get("urgency", "email")
-        except NameError:
-            pass
-
-    if missing_cpty:
-        result["fault"] = "counterparty"
-        result["urgency"] = "call" if settle_date <= DEMO_DATE else "email"
-        result["reason"] = "Missing counterparty confirmation — chase required"
 
     def _emit(outcome: str, status: str) -> None:
         _send_trajectory(

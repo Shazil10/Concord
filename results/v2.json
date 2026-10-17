@@ -4,6 +4,7 @@
     "correct": 20,
     "wrong": 0,
     "crashed": 0,
+    "fault_correct": 20,
     "total": 20
   },
   "trades": [
@@ -17,6 +18,7 @@
       "reason": "All checks passed",
       "fault": "none",
       "urgency": "none",
+      "recipient": "internal",
       "breaks": [],
       "draft_message": "Matched. Ready to release.",
       "summary": "All checks passed",
@@ -31,7 +33,7 @@
         "input": 1400,
         "output": 1153
       },
-      "session_id": "v2-T001-79441ba7"
+      "session_id": "v2-T001-55243f34"
     },
     {
       "trade_id": "T002",
@@ -43,6 +45,7 @@
       "reason": "All checks passed",
       "fault": "none",
       "urgency": "none",
+      "recipient": "internal",
       "breaks": [],
       "draft_message": "Matched. Ready to release.",
       "summary": "All checks passed",
@@ -57,7 +60,7 @@
         "input": 1414,
         "output": 990
       },
-      "session_id": "v2-T002-f0441cf0"
+      "session_id": "v2-T002-db91bc46"
     },
     {
       "trade_id": "T003",
@@ -69,6 +72,7 @@
       "reason": "All checks passed",
       "fault": "none",
       "urgency": "none",
+      "recipient": "internal",
       "breaks": [],
       "draft_message": "Matched. Ready to release.",
       "summary": "All checks passed",
@@ -83,7 +87,7 @@
         "input": 666,
         "output": 709
       },
-      "session_id": "v2-T003-5b0b626e"
+      "session_id": "v2-T003-0b11bbf4"
     },
     {
       "trade_id": "T004",
@@ -95,6 +99,7 @@
       "reason": "All checks passed",
       "fault": "none",
       "urgency": "none",
+      "recipient": "internal",
       "breaks": [],
       "draft_message": "Matched. Ready to release.",
       "summary": "All checks passed",
@@ -109,7 +114,7 @@
         "input": 649,
         "output": 668
       },
-      "session_id": "v2-T004-c7519a65"
+      "session_id": "v2-T004-948e368c"
     },
     {
       "trade_id": "T005",
@@ -121,6 +126,7 @@
       "reason": "All checks passed",
       "fault": "none",
       "urgency": "none",
+      "recipient": "internal",
       "breaks": [],
       "draft_message": "Matched. Ready to release.",
       "summary": "All checks passed",
@@ -135,7 +141,7 @@
         "input": 1343,
         "output": 985
       },
-      "session_id": "v2-T005-39db3913"
+      "session_id": "v2-T005-9abaac78"
     },
     {
       "trade_id": "T006",
@@ -147,6 +153,7 @@
       "reason": "All checks passed",
       "fault": "none",
       "urgency": "none",
+      "recipient": "internal",
       "breaks": [],
       "draft_message": "Matched. Ready to release.",
       "summary": "All checks passed",
@@ -161,7 +168,7 @@
         "input": 1417,
         "output": 966
       },
-      "session_id": "v2-T006-bb1f5b1d"
+      "session_id": "v2-T006-4a0aa38d"
     },
     {
       "trade_id": "T007",
@@ -170,9 +177,10 @@
       "settle_date": "2026-10-19",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
+      "reason": "1 break(s) found \u2014 fault us, email",
       "fault": "us",
       "urgency": "email",
+      "recipient": "Birch Capital",
       "breaks": [
         {
           "field": "account",
@@ -181,8 +189,8 @@
           "issue": "Account mismatch with registry"
         }
       ],
-      "draft_message": "Subject: T007 \u2013 EUR/USD 1,200,000 vs 1,308,000 @ 1.0900, value 2026-10-19 \u2013 Settlement account amendment\n\nHello Birch Capital team,\n\nOn trade T007 (Northline Treasury buys EUR 1,200,000 / sells USD 1,308,000 at 1.0900, trade date 2026-10-15, settling 2026-10-19 in New York) we have identified a break on the USD settlement account field.\n\n- Our confirmation: account 90051000 (Fable National New York, FNBKUSNY)\n- Your instruction/confirmation: account 90051001\n- Registry: account 90051001\n\nThe discrepancy is on our side. Our SSI record was not updated following your account change effective 2026-09-15, and the registry already reflects 90051001. We are correcting our standing data now and will issue an amended confirmation showing account 90051001 ahead of the 2026-10-19 value date.\n\nPlease acknowledge receipt of the amended confirmation once it reaches you so we can confirm both sides are matched before settlement. Apologies for the inconvenience.\n\nKind regards,\nNorthline Treasury \u2013 Settlement Operations",
-      "summary": "1 break(s) found",
+      "draft_message": "To: Birch Capital\nSubject: T007 \u2013 FX EUR/USD \u2013 Account correction, value 2026-10-19\n\nDear Birch Capital,\n\nRe: Trade T007, Northline Treasury buys EUR 1,200,000 / sells USD 1,308,000 at 1.0900, trade date 2026-10-15, value date 2026-10-19, settling New York.\n\nWe have identified a break on the account field:\n- Our value: 90051000\n- Your value: 90051001 (per your confirmation, Fable National New York, FNBKUSNY)\n- Registry value: 90051001\n\nThe discrepancy is on our side. Your notice effective 2026-09-15 replaced account 90051000 with 90051001 for T007 and all open trades settling after that date, and the registry reflects this; our confirmation was not refreshed accordingly.\n\nWe are amending our confirmation to the registry instruction (account 90051001) and will send the amended version shortly. Please confirm the amended confirmation before the value date of 2026-10-19 so settlement can proceed as scheduled.\n\nKind regards,\nNorthline Treasury \u2013 Settlement Operations\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault us, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5179.18,
@@ -191,10 +199,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2834,
-        "output": 2093
+        "input": 3008,
+        "output": 1761
       },
-      "session_id": "v2-T007-ee4952a0"
+      "session_id": "v2-T007-95ce559d"
     },
     {
       "trade_id": "T008",
@@ -203,9 +211,10 @@
       "settle_date": "2026-10-17",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
+      "reason": "1 break(s) found \u2014 fault us, call",
       "fault": "us",
       "urgency": "call",
+      "recipient": "Birch Capital",
       "breaks": [
         {
           "field": "account",
@@ -214,8 +223,8 @@
           "issue": "Account mismatch with registry"
         }
       ],
-      "draft_message": "Urgent hold request \u2013 Trade T008, FX with Birch Capital, value 2026-10-17, Frankfurt. The EUR 940,000 payment is instructed to beneficiary account 90052000 at Quay and Company Frankfurt (QUAYDEFF). That account is wrong \u2013 it was closed for new settlements on 2026-10-01. The correct account per the registry and Birch Capital's notification is 90052002. Please do not release the EUR 940,000 until the instruction is amended to 90052002. We are correcting the SSI now and will confirm once updated.",
-      "summary": "1 break(s) found",
+      "draft_message": "Call talking points \u2013 Birch Capital \u2013 T008 (FX, value today 2026-10-17)\n\n- Calling re T008: Northline Treasury BUY GBP 800,000 / SELL EUR 940,000 at 1.1750, settling today in Frankfurt.\n- Account break on our side. Our confirmation carries account 90052000 at Quay and Company Frankfurt (QUAYDEFF); the registry shows 90052002 per your updated instructions effective 2026-10-01. Our static data was not updated \u2013 fault is ours.\n- Cash at risk: EUR 940,000 we are paying to you would route to the closed account 90052000.\n- We are amending our confirmation to the registry account 90052002 now. Please confirm the amended confirmation once received.\n- Please do not release your GBP 800,000 leg until we have both confirmed the amended instruction and the account match.\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault us, call",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5128.77,
@@ -224,10 +233,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2857,
-        "output": 2152
+        "input": 3049,
+        "output": 1809
       },
-      "session_id": "v2-T008-4b44e8d2"
+      "session_id": "v2-T008-d59983a0"
     },
     {
       "trade_id": "T009",
@@ -236,9 +245,10 @@
       "settle_date": "2026-10-21",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
+      "reason": "1 break(s) found \u2014 fault us, email",
       "fault": "us",
       "urgency": "email",
+      "recipient": "Holm Securities",
       "breaks": [
         {
           "field": "account",
@@ -247,8 +257,8 @@
           "issue": "Account mismatch with registry"
         }
       ],
-      "draft_message": "Subject: T009 \u2013 SLBV 2.80 01DEC2028 \u2013 Settlement account correction, value 21 Oct 2026\n\nDear Holm Securities Settlements,\n\nRe: Trade T009, Northline Treasury buys 6,000,000 SLBV 2.80 01DEC2028 at 99.00, USD 5,940,000, trade date 14 Oct 2026, value date 21 Oct 2026, London.\n\nWe have identified a break on the counterparty settlement account field:\n\n- Our confirmation: 90061000\n- Your confirmation (per your email): 90061001 at Westferry Bank London (WESTGBLN)\n- Registry: 90061001\n\nOur static data was not updated following your account change notice effective 1 Aug 2026, and our confirmation therefore carries the closed account. The error is on our side; apologies for the inconvenience.\n\nWe are updating our records and will reissue an amended confirmation showing account 90061001 today. Could you please acknowledge the amended confirmation and confirm that your instructions remain unchanged ahead of the 21 Oct value date so we can match and release on time.\n\nKind regards,\nSettlement Operations\nNorthline Treasury",
-      "summary": "1 break(s) found",
+      "draft_message": "Dear Holm Securities,\n\nRe: Trade T009 \u2013 BUY 6,000,000 SLBV 2.80 01DEC2028 at 99.00 vs USD 5,940,000, trade date 2026-10-14, value date 2026-10-21, settlement London.\n\nWe have identified a break on the settlement account field for this trade:\n\n- Field: Settlement account\n- Our value: 90061000\n- Your value: 90061001 (Westferry Bank London, WESTGBLN, per your notice)\n- Registry value: 90061001\n\nYour SSI update of 2026-08-01 (closure of 90061000 and replacement by 90061001) was not applied to this trade on our side. The fault is ours.\n\nWe are amending our confirmation to the registry instruction, account 90061001, and will send the amended confirmation shortly. Please confirm the amended confirmation before value date 2026-10-21 so settlement can proceed as scheduled.\n\nWe are also reviewing any other open trades with you settling after 2026-08-01 to ensure the updated account is reflected.\n\nKind regards,\nSettlement Operations\nNorthline Treasury\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault us, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5813.7,
@@ -257,10 +267,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2900,
-        "output": 2189
+        "input": 3045,
+        "output": 2047
       },
-      "session_id": "v2-T009-1ae67e30"
+      "session_id": "v2-T009-6e1dc039"
     },
     {
       "trade_id": "T010",
@@ -269,9 +279,10 @@
       "settle_date": "2026-10-20",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
+      "reason": "1 break(s) found \u2014 fault us, email",
       "fault": "us",
       "urgency": "email",
+      "recipient": "Holm Securities",
       "breaks": [
         {
           "field": "account",
@@ -280,8 +291,8 @@
           "issue": "Account mismatch with registry"
         }
       ],
-      "draft_message": "Subject: T010 \u2013 FX EUR/USD \u2013 Settlement account correction (value 2026-10-20)\n\nDear Holm Securities Settlements,\n\nRe: Trade T010 \u2013 Northline Treasury BUY EUR 2,500,000 / SELL USD 2,725,000 at 1.0900, trade date 2026-10-16, value date 2026-10-20, settlement location London.\n\nOur confirmation for this trade carries an incorrect beneficiary account on the settlement instruction field:\n\n- Field: Counterparty settlement account\n- Our confirmation: 90061000\n- Your value: 90061001 (Westferry Bank London, WESTGBLN)\n- Registry (SSI) value: 90061001\n\nWe have located your notice that account 90061000 was closed for new settlements effective 2026-08-01 and that 90061001 applies to this trade. The error is on our side \u2013 our SSI record for Holm Securities had not been updated.\n\nWe are correcting our standing settlement instruction to 90061001 now and will re-issue an amended confirmation today, ahead of the 2026-10-20 value date. Please review the amended confirmation on receipt and reply to confirm it matches your records so we can release on time.\n\nApologies for the inconvenience.\n\nKind regards,\nSettlement Operations\nNorthline Treasury",
-      "summary": "1 break(s) found",
+      "draft_message": "Dear Holm Securities,\n\nRe: Trade T010 \u2013 FX, Northline Treasury BUY EUR 2,500,000 / SELL USD 2,725,000 at 1.0900, trade date 2026-10-16, value date 2026-10-20, settlement London.\n\nWe have identified a break on the account field for this trade:\n\n- Field: account\n- Our value: 90061000\n- Your value: 90061001\n- Registry value: 90061001 (Westferry Bank London, WESTGBLN)\n\nThe discrepancy is on our side. Our settlement instruction was not updated following the replacement of account 90061000 with 90061001 effective 2026-08-01. We are amending our confirmation and SSI to account 90061001 in line with the registry.\n\nCould you please confirm the amended details so we can align before the 2026-10-20 value date and avoid a misdirected payment.\n\nKind regards,\nNorthline Treasury \u2013 Settlement Operations\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault us, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5373.29,
@@ -290,10 +301,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2112,
-        "output": 1677
+        "input": 2261,
+        "output": 1249
       },
-      "session_id": "v2-T010-7ef26a3f"
+      "session_id": "v2-T010-60d4a553"
     },
     {
       "trade_id": "T011",
@@ -302,9 +313,10 @@
       "settle_date": "2026-10-19",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
-      "fault": "unknown",
+      "reason": "1 break(s) found \u2014 fault counterparty, email",
+      "fault": "counterparty",
       "urgency": "email",
+      "recipient": "Orion Desk",
       "breaks": [
         {
           "field": "pay_bank_code",
@@ -315,8 +327,8 @@
           ]
         }
       ],
-      "draft_message": "Subject: T011 \u2013 FX EUR/USD \u2013 Pay bank code discrepancy \u2013 Amended confirmation requested\n\nHi Orion Desk team,\n\nWe have a break on the confirmation for trade T011 (Northline Treasury BUY EUR 900,000 / SELL USD 981,000 at 1.0900, trade date 15-Oct-2026, settle date 19-Oct-2026, settlement location New York).\n\nField: Pay bank code (USD leg)\nOur value: FNBKUSNY\nYour value: FNBKKRSE\nRegistry value: Not available for this field\n\nOur pay bank code is consistent with New York settlement; the code on your confirmation does not appear to match the settlement location. Could you please check the SSI on your side and send an amended confirmation reflecting the correct pay bank code before the 19-Oct-2026 value date? If you believe FNBKKRSE is correct, please let us know so we can investigate on our end.\n\nMany thanks,\nNorthline Treasury \u2013 Settlement Operations",
-      "summary": "1 break(s) found",
+      "draft_message": "Orion Desk,\n\nRe: Trade T011 \u2013 FX, Northline Treasury buys EUR 900,000 / sells USD 981,000 at 1.0900, trade date 2026-10-15, value date 2026-10-19, settlement New York.\n\nWe have one break on this trade against your confirmation.\n\nField: pay_bank_code (USD pay bank)\n- Our confirmation: FNBKUSNY\n- Your confirmation: FNBKKRSE\n- Registry: FNBKUSNY\n\nThe registry confirms FNBKUSNY as the correct pay bank for this settlement, consistent with the New York settlement location for USD. Your confirmation does not carry this code and instead shows FNBKKRSE.\n\nPlease correct the pay bank code on your side and send an amended confirmation before value date 2026-10-19 so we can match and release.\n\nRegards,\nNorthline Treasury Settlement Operations\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault counterparty, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5134.38,
@@ -325,10 +337,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2651,
-        "output": 2017
+        "input": 2832,
+        "output": 2059
       },
-      "session_id": "v2-T011-5285f1e1"
+      "session_id": "v2-T011-36e563fa"
     },
     {
       "trade_id": "T012",
@@ -337,9 +349,10 @@
       "settle_date": "2026-10-17",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
-      "fault": "unknown",
+      "reason": "1 break(s) found \u2014 fault counterparty, call",
+      "fault": "counterparty",
       "urgency": "call",
+      "recipient": "Pebble Street Capital",
       "breaks": [
         {
           "field": "pay_bank_code",
@@ -350,8 +363,8 @@
           ]
         }
       ],
-      "draft_message": "Calling regarding trade T012, BUY of PBBL 5.00 15JAN2030, quantity 2,500,000 at 100.00, settling 2026-10-17 in Singapore. Cash amount is USD 2,500,000. The pay bank code on your confirmation shows PINEUSCH; our confirmation shows PINESGSG. We cannot confirm the correct SSI from a registry at this time. Please do not release the USD 2,500,000 until we have verified the pay bank code with you and received an amended confirmation if required.",
-      "summary": "1 break(s) found",
+      "draft_message": "Call talking points \u2013 Pebble Street Capital\n\n- Trade T012: Northline Treasury BUY PBBL 5.00 15JAN2030, quantity 2,500,000 at 100.00, settling today 2026-10-17 in Singapore.\n- Cash amount: USD 2,500,000 (we pay).\n- Break on pay_bank_code: our confirmation shows PINESGSG; your confirmation shows PINEUSCH. Registry confirms PINESGSG is correct for this Singapore settlement.\n- Please do not release against PINEUSCH.\n- Please send an amended confirmation with pay bank code PINESGSG before value today.\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault counterparty, call",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5342.47,
@@ -360,10 +373,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2738,
-        "output": 1904
+        "input": 2862,
+        "output": 1791
       },
-      "session_id": "v2-T012-8459bca2"
+      "session_id": "v2-T012-bf7cdcf4"
     },
     {
       "trade_id": "T013",
@@ -372,9 +385,10 @@
       "settle_date": "2026-10-22",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
-      "fault": "unknown",
+      "reason": "1 break(s) found \u2014 fault counterparty, email",
+      "fault": "counterparty",
       "urgency": "email",
+      "recipient": "Cedar Point Markets",
       "breaks": [
         {
           "field": "pay_bank_code",
@@ -385,8 +399,8 @@
           ]
         }
       ],
-      "draft_message": "Subject: T013 \u2013 FX USD/JPY \u2013 Pay bank code discrepancy \u2013 Value 22 Oct 2026\n\nDear Cedar Point Markets Settlements,\n\nWe have identified a break on our FX trade T013 (trade date 16 Oct 2026, Northline Treasury buys JPY 300,000,000 / sells USD 2,000,000 at 150.00, value 22 Oct 2026, settling Singapore).\n\nField: pay_bank_code\nOur value: PINESGSG\nYour value: PINEUSCH\nRegistry value: not available (no SSI record supplied for this trade)\n\nOur instruction references the Singapore branch, consistent with the agreed settlement location. Could you please check the pay bank code against your SSI records and confirm which instruction should apply? If PINEUSCH is not your intended instruction, please send an amended confirmation before value date so we can match and release.\n\nMany thanks,\nNorthline Treasury \u2013 Settlement Operations",
-      "summary": "1 break(s) found",
+      "draft_message": "Cedar Point Markets,\n\nRe: Trade T013 \u2013 USD/JPY FX, trade date 2026-10-16, value date 2026-10-22. Northline Treasury buys JPY 300,000,000 / sells USD 2,000,000 at 150.00, settling Singapore.\n\nWe have identified a break on the pay bank code field:\n- Our confirmation: PINESGSG\n- Your confirmation: PINEUSCH\n- Registry: PINESGSG\n\nOur confirmation agrees with the registry for this Singapore settlement. Please send an amended confirmation showing pay bank code PINESGSG before the 2026-10-22 value date so we can match and release.\n\nRegards,\nNorthline Treasury Settlements\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault counterparty, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5273.97,
@@ -395,10 +409,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2750,
-        "output": 2197
+        "input": 2903,
+        "output": 2035
       },
-      "session_id": "v2-T013-61ffa988"
+      "session_id": "v2-T013-a0095cb6"
     },
     {
       "trade_id": "T014",
@@ -407,9 +421,10 @@
       "settle_date": "2026-10-19",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
-      "fault": "unknown",
+      "reason": "1 break(s) found \u2014 fault counterparty, email",
+      "fault": "counterparty",
       "urgency": "email",
+      "recipient": "Pebble Street Capital",
       "breaks": [
         {
           "field": "pay_account",
@@ -420,8 +435,8 @@
           ]
         }
       ],
-      "draft_message": "Subject: T014 \u2013 Pay account break, EUR/USD value 19 Oct 2026\n\nHi Pebble Street Capital team,\n\nWe have one break on our confirmation match for trade T014 (Northline Treasury buys EUR 700,000 / sells USD 763,000 at 1.0900, trade date 15 Oct 2026, value date 19 Oct 2026, settling in Singapore).\n\nField: pay_account\nOur value: 90071001\nYour value: 90071002\nRegistry value: not yet available \u2013 we are checking the SSI registry on our side and would ask you to do the same.\n\nOur pay account 90071001 does not appear on your confirmation. Could you please verify the account against your standing instructions for Northline Treasury and either confirm 90071001 or let us know the basis for 90071002? Once agreed, please send an amended confirmation before the 19 Oct value date so we can match and release on time.\n\nHappy to jump on a call if that is easier.\n\nThanks,\nNorthline Treasury Settlement Operations",
-      "summary": "1 break(s) found",
+      "draft_message": "Dear Pebble Street Capital,\n\nRe: Trade T014 \u2013 FX, Northline Treasury buys EUR 700,000 vs USD 763,000 at 1.0900, trade date 2026-10-15, value date 2026-10-19, settlement Singapore.\n\nWe have identified a break on the pay_account field between our confirmations:\n\n- Field: pay_account\n- Our value: 90071001\n- Your value: 90071002\n- Registry value: 90071001\n\nOur confirmation matches the registry instruction. Please issue an amended confirmation reflecting pay account 90071001 before value date 2026-10-19 so we can match and release.\n\nKind regards,\nSettlement Operations\nNorthline Treasury\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault counterparty, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5104.52,
@@ -430,10 +445,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2619,
-        "output": 1997
+        "input": 2776,
+        "output": 1799
       },
-      "session_id": "v2-T014-ab3d204c"
+      "session_id": "v2-T014-b27225d1"
     },
     {
       "trade_id": "T015",
@@ -442,10 +457,17 @@
       "settle_date": "2026-10-21",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
-      "fault": "unknown",
+      "reason": "2 break(s) found \u2014 fault us, email",
+      "fault": "us",
       "urgency": "email",
+      "recipient": "Pebble Street Capital",
       "breaks": [
+        {
+          "field": "account",
+          "our_value": "90071002",
+          "registry_value": "90071001",
+          "issue": "Account mismatch with registry"
+        },
         {
           "field": "pay_account",
           "issue": "Our pay account not found in counterparty confirmation",
@@ -455,8 +477,8 @@
           ]
         }
       ],
-      "draft_message": "Subject: T015 \u2013 PBBL 4.00 01NOV2030 \u2013 Pay Account Discrepancy \u2013 VD 21-Oct-2026\n\nHi Pebble Street Capital Settlements team,\n\nWe have one break on the confirmation for the below trade and would appreciate your help resolving it ahead of value date.\n\nTrade: T015\nProduct: Bond\nSecurity: PBBL 4.00 01NOV2030\nNorthline Treasury BUYS 8,000,000 face at 97.25\nSettlement amount: USD 7,780,000\nTrade date: 14-Oct-2026\nSettle date: 21-Oct-2026\nSettlement location: Singapore\n\nField in question: Pay account\n- Our confirmation: 90071002\n- Your confirmation: 90071001\n- Registry / SSI value: not available on our side at the time of writing; we are checking our SSI records in parallel.\n\nGiven the single-digit difference, this looks like it may be a keying error on one side. Could you please check the account against your SSI records for this trade and confirm which account is correct? If 90071002 is the valid account, please send an amended confirmation reflecting it before value date on 21-Oct-2026. If your records show 90071001, please let us know and we will review our instruction accordingly.\n\nWe will hold settlement instructions until the account is agreed.\n\nMany thanks,\nNorthline Treasury \u2013 Settlement Operations",
-      "summary": "1 break(s) found",
+      "draft_message": "Dear Pebble Street Capital,\n\nRe: Trade T015 \u2013 BUY 8,000,000 PBBL 4.00 01NOV2030 at 97.25 vs USD 7,780,000, trade date 2026-10-14, value date 2026-10-21, Singapore.\n\nOn review we identified a break in the settlement account field on our confirmation:\n\n- Field: account / pay account\n- Our value: 90071002\n- Your value: 90071001\n- Registry value: 90071001\n\nYour confirmation agrees with the registry; our confirmation does not. The error is on our side. We are amending our confirmation to the registry instruction (account 90071001) and will reissue it to you shortly.\n\nCould you please review and confirm the amended confirmation before value date 2026-10-21 so we can settle cleanly on the day.\n\nApologies for the inconvenience, and thank you for your help.\n\nKind regards,\nNorthline Treasury Settlement Operations\n\nThis note was not sent.",
+      "summary": "2 break(s) found \u2014 fault us, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 6065.75,
@@ -465,10 +487,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2003,
-        "output": 1647
+        "input": 2293,
+        "output": 1389
       },
-      "session_id": "v2-T015-258a73b5"
+      "session_id": "v2-T015-b2840352"
     },
     {
       "trade_id": "T016",
@@ -477,10 +499,17 @@
       "settle_date": "2026-10-20",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
-      "fault": "unknown",
+      "reason": "2 break(s) found \u2014 fault us, email",
+      "fault": "us",
       "urgency": "email",
+      "recipient": "Lumen Markets",
       "breaks": [
+        {
+          "field": "account",
+          "our_value": "90011099",
+          "registry_value": "90011001",
+          "issue": "Account mismatch with registry"
+        },
         {
           "field": "pay_account",
           "issue": "Our pay account not found in counterparty confirmation",
@@ -490,8 +519,8 @@
           ]
         }
       ],
-      "draft_message": "Subject: T016 \u2013 FX EUR/USD \u2013 Pay account discrepancy, settle 2026-10-20\n\nHi Lumen Markets team,\n\nOn trade T016 (Northline Treasury BUY EUR 1,500,000 vs USD 1,635,000 at 1.0900, trade date 2026-10-16, settlement 2026-10-20, New York), we have a break on the pay account field.\n\n- Field: pay_account\n- Our value: 90011099\n- Your value: 90011001\n- Registry value: not available \u2013 no SSI registry entry was provided for this account\n\nThe two accounts differ only in the final digits, so this may be a keying error on either side. Could you please check the account against your records and the SSI registry and send an amended confirmation (or confirm your figure) before the 2026-10-20 value date so we can match and release?\n\nThanks,\nNorthline Treasury Settlements",
-      "summary": "1 break(s) found",
+      "draft_message": "Dear Lumen Markets,\n\nRe: Trade T016 \u2013 FX, Northline Treasury BUY EUR 1,500,000 / SELL USD 1,635,000 at 1.0900, trade date 2026-10-16, value date 2026-10-20, settling New York.\n\nWe have identified a break on the settlement account field for this trade:\n\n- Field: account (USD pay account)\n- Our confirmation: 90011099\n- Your confirmation: 90011001\n- Registry (SSI) value: 90011001\n\nThe registry instruction and your confirmation agree, and the discrepancy is on our side. We are amending our confirmation to the registry account 90011001 and will re-send it to you shortly. Please confirm the amended confirmation back to us before the 2026-10-20 value date so we can settle on time.\n\nPlease let us know if you have any questions.\n\nKind regards,\nSettlement Operations\nNorthline Treasury\n\nThis note was not sent.",
+      "summary": "2 break(s) found \u2014 fault us, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5223.97,
@@ -500,10 +529,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2676,
-        "output": 1732
+        "input": 3019,
+        "output": 1767
       },
-      "session_id": "v2-T016-695001b1"
+      "session_id": "v2-T016-91f46329"
     },
     {
       "trade_id": "T017",
@@ -512,9 +541,10 @@
       "settle_date": "2026-10-19",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
+      "reason": "1 break(s) found \u2014 fault counterparty, email",
       "fault": "counterparty",
       "urgency": "email",
+      "recipient": "Kite Rowan Securities",
       "breaks": [
         {
           "field": "swapped_sides",
@@ -525,8 +555,8 @@
           "cpty_receive": "90021001"
         }
       ],
-      "draft_message": "Subject: T017 \u2013 FX EUR/USD \u2013 Confirmation Mismatch \u2013 Value 19 Oct 2026\n\nDear Kite Rowan Securities Settlements,\n\nWe have a break on the confirmation for the following trade:\n\nTrade ID: T017\nProduct: FX spot\nTrade date: 15 Oct 2026\nValue date: 19 Oct 2026\nNorthline Treasury BUYS EUR 1,000,000 / SELLS USD 1,090,000 at 1.0900\nSettlement location: London\n\nField: Settlement accounts (pay / receive)\nOur confirmation: Pay account 90021001, Receive account 90020001\nYour confirmation: Pay account 90020001, Receive account 90021001\nSSI registry value: not included in the break record \u2013 we are verifying against the SSI registry in parallel and will share the result.\n\nThe pay and receive accounts on your confirmation appear to be reversed relative to ours. If your 'Pay to' / 'Receive at' are expressed from your side rather than ours, please confirm so we can close this as a presentation difference; otherwise please issue an amended confirmation with the corrected account directionality.\n\nGiven value date is 19 Oct, we would appreciate an amended confirmation (or confirmation of the above) before then so settlement can proceed on time.\n\nKind regards,\nSettlement Operations\nNorthline Treasury",
-      "summary": "1 break(s) found",
+      "draft_message": "Dear Kite Rowan Securities,\n\nRe: Trade T017 \u2013 FX, Northline Treasury BUY EUR 1,000,000 / SELL USD 1,090,000 at 1.0900, trade date 2026-10-15, value date 2026-10-19, settlement London.\n\nOn matching confirmations we have identified a break in the settlement instructions: the pay and receive accounts on your confirmation are swapped.\n\nField: Pay account\n- Our value: 90021001\n- Your value: 90020001\n- Registry value: 90021001\n\nField: Receive account\n- Our value: 90020001\n- Your value: 90021001\n- Registry value: 90020001\n\nYour 'Pay to' currently points at our receive account and your 'Receive at' at our pay account. Our confirmation matches the registry.\n\nCould you please send an amended confirmation with the pay and receive accounts corrected, before the value date of 2026-10-19, so we can match and release on time.\n\nMany thanks,\nNorthline Treasury \u2013 Settlement Operations\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault counterparty, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5149.32,
@@ -535,10 +565,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2996,
-        "output": 2897
+        "input": 3116,
+        "output": 1757
       },
-      "session_id": "v2-T017-519b77ae"
+      "session_id": "v2-T017-ff0e72b8"
     },
     {
       "trade_id": "T018",
@@ -547,9 +577,10 @@
       "settle_date": "2026-10-21",
       "version": "v2",
       "decision": "Hold",
-      "reason": "1 break(s) found",
-      "fault": "unknown",
+      "reason": "1 break(s) found \u2014 fault counterparty, email",
+      "fault": "counterparty",
       "urgency": "email",
+      "recipient": "Sable Fund Services",
       "breaks": [
         {
           "field": "swapped_sides",
@@ -560,8 +591,8 @@
           "cpty_receive": "90031001"
         }
       ],
-      "draft_message": "Subject: T018 \u2013 SBLB 4.00 01NOV2030 \u2013 Settlement instruction mismatch, VD 21-Oct-2026\n\nDear Sable Fund Services team,\n\nWe are reviewing confirmations for trade T018 (Northline Treasury BUY 3,000,000 SBLB 4.00 01NOV2030 at 102.00, USD 3,060,000, settling Zurich, value date 21-Oct-2026) and have identified a break in the settlement instructions.\n\nField: Pay / Receive accounts\nOur confirmation: Pay account 90031001, Receive account 90010001\nYour confirmation: Pay account 90010001, Receive account 90031001\nRegistry value: not yet available \u2013 we are checking the standing settlement instructions on file and will share the result.\n\nThe two confirmations show the pay and receive accounts mirrored. Could you please check your records against your SSIs and let us know which direction is correct on your side? If your confirmation needs to be corrected, we would be grateful for an amended confirmation before the 21-Oct-2026 value date so that we can match and release in good time.\n\nMany thanks,\nNorthline Treasury \u2013 Settlement Operations",
-      "summary": "1 break(s) found",
+      "draft_message": "Dear Sable Fund Services,\n\nRe: Trade T018 \u2013 BOND \u2013 Northline Treasury BUY 3,000,000 SBLB 4.00 01NOV2030 at 102.00 vs USD 3,060,000, trade date 2026-10-15, settle date 2026-10-21, Zurich.\n\nOn matching your confirmation against ours and the registry, we have identified one break:\n\nField: Settlement instructions \u2013 pay/receive accounts (swapped sides)\n- Our value: Pay 90031001 / Receive 90010001\n- Your value: Pay 90010001 / Receive 90031001\n- Registry value: Pay 90031001 / Receive 90010001\n\nYour confirmation has the pay and receive accounts inverted: your \"Pay to\" references our receive account and your \"Receive at\" references our pay account. Our confirmation agrees with the registry.\n\nCould you please issue an amended confirmation with the pay and receive accounts corrected before the value date of 2026-10-21 so that settlement proceeds as intended.\n\nMany thanks.\n\nSettlement Operations\nNorthline Treasury\n\nThis note was not sent.",
+      "summary": "1 break(s) found \u2014 fault counterparty, email",
       "fail_cost": {
         "ok": true,
         "estimated_penalty": 5419.18,
@@ -570,10 +601,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 3012,
-        "output": 2535
+        "input": 3111,
+        "output": 2056
       },
-      "session_id": "v2-T018-bfd626b9"
+      "session_id": "v2-T018-c9039664"
     },
     {
       "trade_id": "T019",
@@ -585,8 +616,16 @@
       "reason": "Missing counterparty confirmation \u2014 chase required",
       "fault": "counterparty",
       "urgency": "call",
-      "breaks": [],
-      "draft_message": "Matched. Ready to release.",
+      "recipient": "Quill Asset Management",
+      "breaks": [
+        {
+          "field": "counterparty_confirmation",
+          "our_value": "confirmation sent",
+          "their_value": "none received",
+          "issue": "No confirmation received from Quill Asset Management; chase before value date"
+        }
+      ],
+      "draft_message": "Call talking points \u2013 Quill Asset Management\n\nFor: Quill Asset Management settlements desk\nRe: Trade T019 \u2013 FX, value today 2026-10-17\n\n- Northline Treasury buys USD 1,635,000 / sells EUR 1,500,000 at 1.0900, settling Amsterdam.\n- Our confirmation was sent on trade date (2026-10-16). We have not received your confirmation.\n- No economic terms are in dispute on our side; the break is the missing confirmation only.\n- Please send your confirmation (or an amended confirmation if your terms differ) as soon as possible and ahead of value date cut-off today.\n- Please do not release EUR 1,500,000 / USD 1,635,000 settlement until confirmations are matched on both sides.\n- Confirm back by email so we can clear the break before cut-off.\n\nThis note was not sent.",
       "summary": "Missing counterparty confirmation \u2014 chase required",
       "fail_cost": {
         "ok": true,
@@ -596,10 +635,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 2615,
-        "output": 561
+        "input": 3023,
+        "output": 1340
       },
-      "session_id": "v2-T019-524e3b24"
+      "session_id": "v2-T019-07f1bccf"
     },
     {
       "trade_id": "T020",
@@ -611,8 +650,16 @@
       "reason": "Missing counterparty confirmation \u2014 chase required",
       "fault": "counterparty",
       "urgency": "email",
-      "breaks": [],
-      "draft_message": "Matched. Ready to release.",
+      "recipient": "Veldt Capital",
+      "breaks": [
+        {
+          "field": "counterparty_confirmation",
+          "our_value": "confirmation sent",
+          "their_value": "none received",
+          "issue": "No confirmation received from Veldt Capital; chase before value date"
+        }
+      ],
+      "draft_message": "To: Veldt Capital\nSubject: T020 \u2013 VLDB 3.50 01SEP2032 \u2013 outstanding confirmation, value 23-Oct-2026\n\nDear Veldt Capital,\n\nWe are chasing an outstanding confirmation on the below trade, which settles on 23 October 2026 in Zurich.\n\nTrade ID: T020\nProduct: Bond\nTrade date: 16 October 2026\nSettle date: 23 October 2026\nOur side: Northline Treasury BUYS 5,000,000 VLDB 3.50 01SEP2032 at 100.50\nSettlement amount: USD 5,025,000\nSettlement location: Zurich\n\nOpen item \u2013 field: counterparty_confirmation\n- Our value: confirmation sent\n- Your value: none received\n- Registry value: not applicable \u2013 no counterparty confirmation exists to compare against\n\nOur confirmation has been issued and our economics (5,000,000 x 100.50 = USD 5,025,000) are internally consistent. We have not yet received your confirmation, so the trade cannot be affirmed on our side.\n\nPlease send your confirmation for T020 before value date. If your details differ from the above, please send an amended confirmation reflecting your records so we can resolve any discrepancy ahead of 23 October.\n\nKind regards,\nNorthline Treasury \u2013 Settlement Operations\n\nThis note was not sent.",
       "summary": "Missing counterparty confirmation \u2014 chase required",
       "fail_cost": {
         "ok": true,
@@ -622,10 +669,10 @@
         "note": "Demo estimate only. Flat 5000 + 5% annual per day."
       },
       "total_tokens": {
-        "input": 1838,
-        "output": 567
+        "input": 2279,
+        "output": 1612
       },
-      "session_id": "v2-T020-6f27b68a"
+      "session_id": "v2-T020-bab0fa26"
     }
   ]
 }

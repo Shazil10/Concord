@@ -104,16 +104,23 @@ def main() -> None:
     print(f"{'='*60}")
 
     # One row per trade in the saved file, even when --repeat flooded PRISM.
+    # Running a subset with --trades updates those rows and keeps the rest.
+    out_path = RESULTS_DIR / f"{args.version}.json"
     by_id: dict[str, dict] = {}
+    if args.trades and out_path.exists():
+        for row in json.loads(out_path.read_text()).get("trades", []):
+            by_id[row["trade_id"]] = row
     for row in results:
         by_id[row["trade_id"]] = row
-    saved = [by_id[tid] for tid in trade_ids if tid in by_id]
+    order = [t["trade_id"] for t in all_trades]
+    saved = [by_id[tid] for tid in order if tid in by_id]
     saved_correct = sum(1 for row in saved if row.get("decision") == scenarios.get(row["trade_id"], {}).get("expected_decision"))
     saved_crashed = sum(1 for row in saved if row.get("decision") == "CRASH")
     saved_wrong = len(saved) - saved_correct - saved_crashed
+    saved_fault = sum(1 for row in saved if row.get("fault") == scenarios.get(row["trade_id"], {}).get("expected_fault"))
+    print(f"  Fault right: {saved_fault}/{len(saved)}")
 
     # Write results JSON
-    out_path = RESULTS_DIR / f"{args.version}.json"
     with open(out_path, "w") as f:
         json.dump({
             "version": args.version,
@@ -121,6 +128,7 @@ def main() -> None:
                 "correct": saved_correct,
                 "wrong": saved_wrong,
                 "crashed": saved_crashed,
+                "fault_correct": saved_fault,
                 "total": len(saved),
             },
             "trades": saved,
