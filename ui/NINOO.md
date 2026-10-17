@@ -55,3 +55,17 @@ Use exactly this data for each Hold trade (Field | Our value | Their value | Reg
 Screen 3, Outbox. A list of notes sitting on this desk. Empty until Approve is clicked. Each row shows the trade id, the counterparty, and the words "Not sent".
 
 Keep every name and account fictional. Do not add a send button.
+
+## Follow-up prompt (paste after the first build)
+
+Keep everything that works. Add these four things.
+
+1. Queue header stats: replace the three boxes with four: "20 trades", "6 release", "14 on hold", "3 calls today" (red). Under the title add one line: "Held today: USD 34.8M and EUR 2.44M kept from paying out wrong."
+
+2. Queue table: add three columns after counterparty: Cash (amount and currency), Fault (us / counterparty, blank for Release), Action (Call in red, Email in grey, blank for Release). Cash per trade: T001 USD 5,450,000; T002 USD 2,540,000; T003 USD 9,850,000; T004 USD 5,000,000; T005 EUR 4,050,000; T006 EUR 2,760,000; T007 USD 1,308,000; T008 EUR 940,000; T009 USD 5,940,000; T010 USD 2,725,000; T011 USD 981,000; T012 USD 2,500,000; T013 USD 2,000,000; T014 USD 763,000; T015 USD 7,780,000; T016 USD 1,635,000; T017 USD 1,090,000; T018 USD 3,060,000; T019 EUR 1,500,000; T020 USD 5,025,000. Calls: T008, T012, T019. Fault us: T007, T008, T009, T010, T015, T016. Fault counterparty: T011, T012, T013, T014, T017, T018, T019, T020.
+
+3. Trade screen: above the break table add a panel "What Concord checked" listing these 12 checks in order, each with a green tick, a red cross, or grey "skipped": Load trade; Read our confirmation; Read their confirmation; Custodian status; Registry lookup; Bank and branch; Account vs registry; Both sides agree; Amounts and dates; Fail cost; Decide; Draft note. Red crosses: T007–T010 "Account vs registry"; T011–T014, T017, T018 "Both sides agree"; T015 and T016 both "Account vs registry" and "Both sides agree"; T019 and T020 "Read their confirmation", with "Both sides agree" skipped. Every other check is a green tick. Release trades show all 12 green. Also show "Cash at risk" and "Est. fail cost if it fails" on the trade screen. Fail cost: T007 USD 5,179; T008 EUR 5,129; T009 USD 5,814; T010 USD 5,373; T011 USD 5,134; T012 USD 5,342; T013 USD 5,274; T014 USD 5,105; T015 USD 6,066; T016 USD 5,224; T017 USD 5,149; T018 USD 5,419; T019 EUR 5,205; T020 USD 5,688. Make the "Fault: us" or "Fault: counterparty" badge clearly visible next to the title.
+
+4. On T007, T008, T009 and T010 only, add an amber banner at the top: "Concord v1 released this trade. It read an old copy of the instructions and would have paid a closed account. v2 reads the live registry and holds it." Add a small footer link on every trade screen: "Every check on this trade is traced in PRISM."
+
+Keep the dark style. No send button. Nothing leaves the page.
